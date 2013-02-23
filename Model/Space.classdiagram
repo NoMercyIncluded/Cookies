@@ -1,0 +1,337 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="0bd647ba-f254-4e18-b66f-2f4c81e3c6cb" name="Space" linkedPackageId="84e824b9-e79e-45ed-a98c-4c38c15ec9d6" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <ownedCommentsInternal>
+    <comment Id="5c112b17-352b-4274-a85b-609aa26adb59">
+      <elementDefinition Id="a6774367-a929-48bb-98cd-c31a57b0ceaf" />
+      <body>ForcesList is HashMap indexed by type. As value it holds another HashMap indexed by point of force application
+</body>
+      <annotatedElements>
+        <classMoniker Id="181dacd0-1d72-4b15-b2f2-16ef9ff9793d" LastKnownName="ForceContainer" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
+  <profileInstances>
+    <packageHasProfileInstances Id="0d9d3c2d-8be7-4efe-91d6-a0c22a40a86b">
+      <profileInstance Id="e1173feb-8c56-497f-bda6-8f1dbedb5d9d" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="7eb6a22b-e645-4b92-9aff-4de41e503c8b">
+      <profileInstance Id="9b4e3709-e326-4b10-acc2-996546a94824" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="cc3e4108-4187-45a7-a352-c70d7e2c1052" name="SpaceObject" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="62b64ba8-cd33-4f98-a9cc-10511c7827de" />
+        <targetEnds>
+          <association Id="3d41887a-2113-420e-a6e4-892911c720aa" isDerived="false" sourceEndRoleName="SpaceObject" targetEndRoleName="ForceContainer" isLeaf="false" isAbstract="false">
+            <classMoniker Id="181dacd0-1d72-4b15-b2f2-16ef9ff9793d" LastKnownName="ForceContainer" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="6d6c5d43-349a-46ec-9662-7e7779051c86" name="SpaceObject" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="0ac5f621-cad9-40ef-aa84-1bd4a50f2436" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="38bcb720-788a-4ac4-a537-c3a2a338d07d" name="ForceContainer" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="e61eae79-8e20-4f04-8008-06438f4f8093" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="30a4434d-c0ca-416e-8bd2-3e1fc2245a92" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="52645840-717e-4934-8de3-a4aa0fdd6da8" name="Density" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="89b9688e-d930-4c39-a7e7-99ac117735a0" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="99880176-b04e-42b9-a8c1-2be07f781c31" LastKnownName="float" />
+            </type_NamedElement>
+          </property>
+          <property Id="75c58005-9493-4779-bf90-8df7fd44b9d3" name="ShapeDefinition" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <lowerValueInternal>
+              <literalString Id="be83f83c-1eee-45f3-a624-6b11ce52cd4e" name="Lower" value="*">
+                <elementDefinition Id="9c33f54a-eed7-4386-8d3e-1f47eb164f82" />
+              </literalString>
+            </lowerValueInternal>
+            <upperValueInternal>
+              <literalString Id="76d46536-3705-42a5-99a2-9eef7bf4178a" name="Upper" value="*">
+                <elementDefinition Id="a891b36e-4eb4-4097-b6ec-2aed893e5a60" />
+              </literalString>
+            </upperValueInternal>
+            <elementDefinition Id="12b522c5-c9f7-407d-829f-e2dff54c5b26" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="1b57fbc4-aecb-4bb8-80a6-665f0529edfb" LastKnownName="Vector2" />
+            </type_NamedElement>
+          </property>
+          <property Id="6fc1d657-6c76-4d07-aad7-7cb612fe6b17" name="Position" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="b136d8c1-b494-40cd-9155-57f6f3ed45bc" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="b4bc612c-24d1-4b2c-8bd3-d2e357e8866f" LastKnownName="Vector2" />
+            </type_NamedElement>
+          </property>
+          <property Id="b8b41b2c-e88b-40a8-9809-7234d181b04f" name="Rotation" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="b3033f73-32d5-4017-be0f-87fed340268c" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="99880176-b04e-42b9-a8c1-2be07f781c31" LastKnownName="float" />
+            </type_NamedElement>
+          </property>
+          <property Id="66076a92-2ce7-48ce-8aaf-98cce2f26eb9" name="Mass : float" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="2b6ebe35-b3b9-42bc-811a-3d4e75ab6979" />
+          </property>
+          <property Id="a8a3ed4c-928c-4368-bb8a-3597fa73450d" name="PhisicsBody" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="83e8e1b5-65c7-4abd-a9bf-f76f03369644" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="5db27a7e-0240-48cf-b252-406d8fe49729" LastKnownName="Body" />
+            </type_NamedElement>
+          </property>
+          <property Id="6a80e0db-9ce7-4f43-94fb-a18b4b87f1b5" name="PhisicsWorld" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="83623542-adcb-4fee-a55d-bf4d8004f549" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="ed26da84-aad2-410c-9706-564bbd3e6d3a" LastKnownName="World" />
+            </type_NamedElement>
+          </property>
+          <property Id="e8d284dc-6124-478e-b2f4-9cc430a805bd" name="DrawingData" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="d66bf6a9-03ed-4004-a85c-472cd8677415" />
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation Id="5df34f0e-5b22-4a7b-82ae-0d829b686f98" name="SpaceObject" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <appliedStereotypesInternal>
+              <stereotypeInstance Id="32f556de-ea24-4757-a82b-d2cb09c29af8" name="create" profile="StandardProfileL2">
+                <elementDefinition Id="3ab11679-ff5a-43cc-bf27-144cefb82063" />
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <elementDefinition Id="cfd4f62c-a143-45c4-aa60-ece1cdec5477" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="4f7d7808-a0b6-4091-94a6-24c9b71e7ad8" name="phisicsWorld" direction="In">
+                  <elementDefinition Id="00693a29-480c-4305-8adc-321f6cc713c7" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="ed26da84-aad2-410c-9706-564bbd3e6d3a" LastKnownName="World" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="41baa422-10f8-474b-8ef5-4c3a8de77562" name="density" direction="In">
+                  <elementDefinition Id="01492a6b-a2f6-4c96-a147-893e1b8bb875" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="99880176-b04e-42b9-a8c1-2be07f781c31" LastKnownName="float" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="63329d28-a9ce-4c8d-bb10-7fe593be4b2b" name="Position" direction="In">
+                  <elementDefinition Id="31c27285-6103-4223-a9d9-997332ba47d7" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="1b57fbc4-aecb-4bb8-80a6-665f0529edfb" LastKnownName="Vector2" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="02ffff63-d22b-478b-8b25-383151f29f31" name="shapeDefinition" direction="In">
+                  <lowerValueInternal>
+                    <literalString Id="017b7c3a-7918-4901-9d4f-6928ffdae9be" name="Lower" value="*">
+                      <elementDefinition Id="79025c33-7f6a-41b1-a03a-116d4e11f268" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="2688ec51-38e4-4d6a-b35b-1becb7525e0d" name="Upper" value="*">
+                      <elementDefinition Id="17c6f32e-e138-460b-8fdc-4eb7aca46ddb" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="f8201522-91c9-4818-b887-19a4900adc09" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="1b57fbc4-aecb-4bb8-80a6-665f0529edfb" LastKnownName="Vector2" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="99880176-b04e-42b9-a8c1-2be07f781c31" name="float" isAbstract="false" isLeaf="false" cachedFullName="float">
+        <elementDefinition Id="95e06532-1bfa-4ecc-85d0-e94516a54b0a" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="1b57fbc4-aecb-4bb8-80a6-665f0529edfb" name="Vector2" isAbstract="false" isLeaf="false" cachedFullName="Vector2">
+        <elementDefinition Id="70a8cad3-b553-4407-b422-1718e0e9fc09" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="b4bc612c-24d1-4b2c-8bd3-d2e357e8866f" name="Vector2" isAbstract="false" isLeaf="false" cachedFullName="Vector2">
+        <elementDefinition Id="70a8cad3-b553-4407-b422-1718e0e9fc09" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="ed26da84-aad2-410c-9706-564bbd3e6d3a" name="World" isAbstract="false" isLeaf="false" cachedFullName="World">
+        <elementDefinition Id="6c114a7f-8077-4b61-8905-5176012afe81" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="181dacd0-1d72-4b15-b2f2-16ef9ff9793d" name="ForceContainer" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="37f56a20-226d-48c4-84a4-c038c1b5342d" />
+        <ownedAttributesInternal>
+          <property Id="9cfbaa81-8c39-482f-9941-fcae8305aaa4" name="ForcesList" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <lowerValueInternal>
+              <literalString Id="f83804b8-e56d-4a60-8146-475a9cc7edd7" name="Lower" value="*">
+                <elementDefinition Id="04acbf99-ab07-4048-bbea-5f241566fa28" />
+              </literalString>
+            </lowerValueInternal>
+            <upperValueInternal>
+              <literalString Id="99eba185-8628-4cea-812e-d1cd5dfba0d3" name="Upper" value="*">
+                <elementDefinition Id="9b78ac38-452e-49dc-94f8-b82c7ace30f2" />
+              </literalString>
+            </upperValueInternal>
+            <elementDefinition Id="4879a77c-f3b8-42cc-ab07-a0e6c25f3afb" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="d23d60a6-f415-4d75-bafa-ad4d0a4cd7d3" LastKnownName="Vector2[*]" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation Id="b0a2ab1e-97c4-4850-8bfe-b4409f2ddca3" name="reset" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="a4c0248b-08c7-4934-8f5e-6bb7cd0d1c6b" />
+          </operation>
+          <operation Id="8265a2ad-0f85-4c03-a2c0-837ea2df376c" name="applyForce" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="11f910f3-267c-406b-bc37-9c6c1ea2d10d" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="6437ea0f-c76a-46c5-9752-c2caab4277fd" name="forceType" direction="In">
+                  <elementDefinition Id="7f4bf0ec-cb26-4a72-80e3-e28609220c37" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="8cf4f06f-f969-4b7a-82f0-2463e8097fdc" LastKnownName="String" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="443a548c-0220-4c92-95b1-e9b3feef73bc" name="forceValue" direction="In">
+                  <elementDefinition Id="c8587bad-ec64-4609-b4a0-3ad7b003dbd2" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="1b57fbc4-aecb-4bb8-80a6-665f0529edfb" LastKnownName="Vector2" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="8e2cb4e4-211e-4e67-b37d-c93251d704ad" name="getForce" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="3bdffd87-1519-4303-a85d-d9639a242e56" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="6e615623-1f3c-4ad5-bf44-623229aca87b" name="forceType" direction="In" isUnique="false">
+                  <elementDefinition Id="ee76f025-a929-429d-b7e0-dac900e89da2" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="8cf4f06f-f969-4b7a-82f0-2463e8097fdc" LastKnownName="String" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="915664f6-721b-4bdb-8ba2-b080b724c415" direction="Return" isUnique="false">
+                  <lowerValueInternal>
+                    <literalString Id="47c8d989-cec6-4edc-a925-8a6c7e879494" name="Lower" value="*">
+                      <elementDefinition Id="75d51965-08d1-48ee-a82b-93ed6833e333" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="8a083816-157c-4422-9016-526a90201075" name="Upper" value="*">
+                      <elementDefinition Id="861744fc-6d1a-43ec-8950-6f58eb7e4a3a" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="63986d60-1fd9-4859-9dee-ececaba97de3" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="15ea1ea1-d450-4873-b163-cd96f0a9ec57" LastKnownName="Vector2" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="5c102f85-e361-4385-a2c7-2b1ae6c13093" name="applyForce" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="a6f8965d-6cda-43c5-b9e6-04bd02b90381" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="05f5fd95-9e35-4f76-ba15-689bd5162ff0" name="forceType" direction="In" isUnique="false">
+                  <elementDefinition Id="868e00ff-542a-42d2-bca3-e703406864ee" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="8cf4f06f-f969-4b7a-82f0-2463e8097fdc" LastKnownName="String" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="75ce9e86-d650-473e-9613-d132e3e089c9" name="forceValue" direction="In" isUnique="false">
+                  <elementDefinition Id="293f8609-93fc-4393-aeb8-d74cf08ba15b" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="1b57fbc4-aecb-4bb8-80a6-665f0529edfb" LastKnownName="Vector2" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="4c5488b5-8132-4e40-a1d7-a069635f7b19" name="forceApplicaitonPoint" direction="In" isUnique="false">
+                  <elementDefinition Id="e2369718-a43e-4414-a7e5-adf2952d25c1" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="1b57fbc4-aecb-4bb8-80a6-665f0529edfb" LastKnownName="Vector2" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="8cf4f06f-f969-4b7a-82f0-2463e8097fdc" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="5db27a7e-0240-48cf-b252-406d8fe49729" name="Body" isAbstract="false" isLeaf="false" cachedFullName="Body">
+        <elementDefinition Id="e63dd0cd-5f82-4486-8439-7cf679e27754" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="d23d60a6-f415-4d75-bafa-ad4d0a4cd7d3" name="Vector2[*]" isAbstract="false" isLeaf="false" cachedFullName="Vector2[*]">
+        <elementDefinition Id="484618ff-6268-4a01-8a68-1d0a076829be" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="15ea1ea1-d450-4873-b163-cd96f0a9ec57" name="Vector2" isAbstract="false" isLeaf="false" cachedFullName="Vector2">
+        <elementDefinition Id="70a8cad3-b553-4407-b422-1718e0e9fc09" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="222621a2-58fe-4ff8-9997-1cef19251a81" name="SpaceShip" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="d546d7a1-0c6e-4586-9aea-b8a4d1c35dd9" />
+        <generalsInternal>
+          <generalization Id="c616d3ea-ab48-46f0-a075-45aa00dcf68f" isSubstitutable="false">
+            <classMoniker Id="cc3e4108-4187-45a7-a352-c70d7e2c1052" LastKnownName="SpaceObject" />
+            <elementDefinition Id="aacfe14c-bdc7-4395-8bd8-a2f64d1e2661" />
+          </generalization>
+        </generalsInternal>
+        <ownedAttributesInternal>
+          <property Id="58818eaa-c682-48e6-a64c-d8e75d3bf813" name="ThrusterLongDist" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="bb0276df-cb60-4160-ba38-ed89ee05dc49" />
+          </property>
+          <property Id="9ea5f60e-efeb-43b3-bf2c-fb1e0f54f07f" name="ThrusterManeuver" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="5f710caa-48f3-40c0-88e3-f195308a94ec" />
+          </property>
+          <property Id="90004c48-b56d-4e7d-bf2b-040252b2f6f1" name="ThrusterShortDist" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="17bdfaf6-20bf-4fe7-bbe5-6d399b469fd0" />
+          </property>
+          <property Id="43e13dc2-1e7f-4c52-8833-9b62fbd00483" name="ShipModel" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="71b0f0a8-99a2-4f53-a345-e3de545595c6" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="84e824b9-e79e-45ed-a98c-4c38c15ec9d6" name="Model">
+    <elementDefinition Id="8bdafaf5-c5f4-4252-b9f5-4466996b0553" />
+  </package>
+</logicalClassDesignerModel>

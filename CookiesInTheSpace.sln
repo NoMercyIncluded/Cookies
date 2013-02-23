@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Box2D.XNA - windows", "Box2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Primitives2D", "Primitives2D\Primitives2D.csproj", "{39AD1482-1881-4852-A05D-DC61B0D3446A}"
 EndProject
+Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "Model", "Model\Model.modelproj", "{316C9C53-C062-4289-B75C-08316E612419}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,16 @@ Global
 		{39AD1482-1881-4852-A05D-DC61B0D3446A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{39AD1482-1881-4852-A05D-DC61B0D3446A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{39AD1482-1881-4852-A05D-DC61B0D3446A}.Release|x86.ActiveCfg = Release|Any CPU
+		{316C9C53-C062-4289-B75C-08316E612419}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{316C9C53-C062-4289-B75C-08316E612419}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{316C9C53-C062-4289-B75C-08316E612419}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{316C9C53-C062-4289-B75C-08316E612419}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{316C9C53-C062-4289-B75C-08316E612419}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{316C9C53-C062-4289-B75C-08316E612419}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{316C9C53-C062-4289-B75C-08316E612419}.Release|Any CPU.Build.0 = Release|Any CPU
+		{316C9C53-C062-4289-B75C-08316E612419}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{316C9C53-C062-4289-B75C-08316E612419}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{316C9C53-C062-4289-B75C-08316E612419}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
