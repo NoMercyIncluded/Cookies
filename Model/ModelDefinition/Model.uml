@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
   dslVersion="1.0.0.0"
   Id="8bdafaf5-c5f4-4252-b9f5-4466996b0553"
   name="Model" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -12,6 +12,32 @@
         <classMoniker
           Id="37f56a20-226d-48c4-84a4-c038c1b5342d"
           LastKnownName="ForceContainer"
+          LastKnownLocation="Model.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="48d67b2b-0b1b-4198-9ce4-6dcf05ab2912">
+      <body>Possible result in iteration callback. If iterator won't be able to satisfy result, it'll go into next possible node.
+BREAK ends iteration completaly.
+CONTINUE_STEP_INTO goes deeper. It represents full search.
+CONTINUE_NEXT goes to next neighbour.
+CENTINUE_STEP_OUT goes to parrents next nieghbour.</body>
+      <annotatedElements>
+        <enumerationMoniker
+          Id="76093dd2-3034-4ac7-a158-9b410ced1a55"
+          LastKnownName="SpaceTreeIterationResult"
+          LastKnownLocation="Model.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="bf31efae-2178-43f6-8625-fcf387012e1f">
+      <body>As silly as it looks this is just definition of callback method for iteration in SpaceTree. In c# it will end up as delegate type in SpaceTree.
+See this msdn example for more info:
+http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
+      <annotatedElements>
+        <classMoniker
+          Id="46adc305-67da-414f-a042-d098feb2743d"
+          LastKnownName="SpaceTreeIteration"
           LastKnownLocation="Model.uml" />
       </annotatedElements>
     </comment>
@@ -1888,6 +1914,360 @@
         name="ResourceType"
         isAbstract="false"
         isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="7575b971-008f-410d-9a85-5ec7d1e8e1f5"
+        name="SpaceTree"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <dependency
+            Id="06280a46-315f-4360-a0a1-c14999c23745">
+            <classMoniker
+              Id="46adc305-67da-414f-a042-d098feb2743d"
+              LastKnownName="SpaceTreeIteration"
+              LastKnownLocation="Model.uml" />
+          </dependency>
+        </suppliersInternal>
+        <targetEnds>
+          <association
+            Id="eb7db7c4-e8da-450a-9644-88c0a350e282"
+            isDerived="false"
+            sourceEndRoleName="SpaceTree"
+            targetEndRoleName="SpaceTreeNode"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="9c598c5d-0c3a-4942-839e-cd97c2769d97"
+              LastKnownName="SpaceTreeNode"
+              LastKnownLocation="Model.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="c7aa2b31-f402-4b17-9fc7-d69cc17f6aab"
+                  name="SpaceTree"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Composite"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="81fee853-56e1-4ce9-bc5d-9fc4b3f99cff"
+                  name="SpaceTreeNode"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="true" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="8ad2070b-fb5f-4c11-810e-4d5535a10f20"
+            name="Size"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="66fc647c-1505-46ac-8142-7c9133911fe8"
+            name="addObject"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="63349209-7c18-4986-bc0f-0ff80a577346"
+                  name="spaceObject"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="62b64ba8-cd33-4f98-a9cc-10511c7827de"
+                      LastKnownName="SpaceObject"
+                      LastKnownLocation="Model.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="84c42d65-c678-4e36-9a5d-a20aa8e19bbf"
+            name="removeObject"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="ee9c008b-72a8-4a11-9f70-35582e53fe57"
+                  name="spaceObject"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="62b64ba8-cd33-4f98-a9cc-10511c7827de"
+                      LastKnownName="SpaceObject"
+                      LastKnownLocation="Model.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="686c271c-b8ef-4a5e-a488-dfa0115eac31"
+            name="iterateTree"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="030e740f-c7bf-46ae-a62a-2efd1421020c"
+                  name="spaceTreeIteration"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="46adc305-67da-414f-a042-d098feb2743d"
+                      LastKnownName="SpaceTreeIteration"
+                      LastKnownLocation="Model.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="9c598c5d-0c3a-4942-839e-cd97c2769d97"
+        name="SpaceTreeNode"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="8c815d3d-57ec-4819-9559-50fc8e82f17b"
+            isDerived="false"
+            sourceEndRoleName="SpaceTreeNode"
+            targetEndRoleName="SpaceTreeNode"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="9c598c5d-0c3a-4942-839e-cd97c2769d97"
+              LastKnownName="SpaceTreeNode"
+              LastKnownLocation="Model.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="84eb193f-3810-40c0-a393-436450c64ebb"
+                  name="SpaceTreeNode"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Shared"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="89a7a453-aff7-47e9-9366-e275ed2528da"
+                  name="SpaceTreeNode"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="dcf79a3a-5fec-4451-a9d3-0738ec7cdfbf"
+                      name="Lower"
+                      value="4" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="7431b313-539f-4281-8868-4df294b67b34"
+                      name="Upper"
+                      value="4" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="b44ca0eb-a9b8-40c4-802f-7eda54b44fea"
+            name="Mass"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="d51c4611-c44f-4997-8943-6099b182c5cf"
+            name="CenterOfMassPosition"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="c1cca76a-7eb9-468b-80d1-62406aa1f6db"
+            name="Position"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="50e1f581-98b6-479f-a005-4c000607e084"
+            name="Size"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="440fcd2a-ad79-43ff-931a-2254550bbe3a"
+            name="SpaceObject"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+        </ownedAttributesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="24a5d776-f9b9-46ef-a243-b37f92d32fc7"
+        name="SPaceObject" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="46adc305-67da-414f-a042-d098feb2743d"
+        name="SpaceTreeIteration"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <dependency
+            Id="b83d8066-4d98-4913-9e22-1999949ae21a">
+            <enumerationMoniker
+              Id="76093dd2-3034-4ac7-a158-9b410ced1a55"
+              LastKnownName="SpaceTreeIterationResult"
+              LastKnownLocation="Model.uml" />
+          </dependency>
+        </suppliersInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="8084d770-faa8-45c4-87f0-ae15a49c3b67"
+            name="spaceTreeIteration"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="a421b5ea-10d6-4fe8-b56a-ec05e3cf7adb"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <enumerationMoniker
+                      Id="76093dd2-3034-4ac7-a158-9b410ced1a55"
+                      LastKnownName="SpaceTreeIterationResult"
+                      LastKnownLocation="Model.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="88684ff9-fd41-4ba4-9510-c75b10446377"
+                  name="spaceNode"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="9c598c5d-0c3a-4942-839e-cd97c2769d97"
+                      LastKnownName="SpaceTreeNode"
+                      LastKnownLocation="Model.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <enumeration
+        Id="76093dd2-3034-4ac7-a158-9b410ced1a55"
+        name="SpaceTreeIterationResult"
+        isAbstract="false"
+        isLeaf="false">
+        <ownedLiterals>
+          <enumerationLiteral
+            Id="f10a38ba-3ed4-46f0-8266-086364e3f3b8"
+            name="BREAK" />
+          <enumerationLiteral
+            Id="880115f0-2b5c-4ed8-8135-6fc3a5c67d95"
+            name="CONTINUE_STEP_INTO" />
+          <enumerationLiteral
+            Id="cd41cf95-5a81-4851-8b76-feb2fe5a9b41"
+            name="CONTINUE_NEXT" />
+          <enumerationLiteral
+            Id="cb4446ac-c330-4e6e-8e6f-588295b84822"
+            name="CONTINUE_STEP_OUT" />
+        </ownedLiterals>
+      </enumeration>
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType
