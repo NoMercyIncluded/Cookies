@@ -3,13 +3,14 @@
   <ownedCommentsInternal>
     <comment Id="2b936cbc-e108-4a5a-98ea-e6d8f57d98d8">
       <elementDefinition Id="48d67b2b-0b1b-4198-9ce4-6dcf05ab2912" />
-      <body>Possible result in iteration callback. If iterator won't be able to satisfy result, it'll go into next possible node.
-BREAK ends iteration completaly.
+      <body>Possible result in iteration callback. If iterator won't be able to satisfy result, it'll go into next possible node, but no deeper than result suggested.
+
+BREAK ends iteration.
 CONTINUE_STEP_INTO goes deeper. It represents full search.
 CONTINUE_NEXT goes to next neighbour.
 CENTINUE_STEP_OUT goes to parrents next nieghbour.</body>
       <annotatedElements>
-        <enumerationMoniker Id="34cfad1c-7dda-4a4a-8f09-ac604d082725" LastKnownName="SpaceTreeIterationResult" />
+        <enumerationMoniker Id="34cfad1c-7dda-4a4a-8f09-ac604d082725" LastKnownName="SpaceTreeIterationCallbackResult" />
       </annotatedElements>
     </comment>
     <comment Id="9fda8681-2937-4820-874c-2c16974ffee4">
@@ -18,7 +19,7 @@ CENTINUE_STEP_OUT goes to parrents next nieghbour.</body>
 See this msdn example for more info:
 http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
       <annotatedElements>
-        <classMoniker Id="52cb5bda-3cb3-4960-bb4c-2e1e1ce33665" LastKnownName="SpaceTreeIteration" />
+        <classMoniker Id="52cb5bda-3cb3-4960-bb4c-2e1e1ce33665" LastKnownName="SpaceTreeIterationCallback" />
       </annotatedElements>
     </comment>
   </ownedCommentsInternal>
@@ -28,12 +29,12 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
         <elementDefinition Id="7575b971-008f-410d-9a85-5ec7d1e8e1f5" />
         <suppliersInternal>
           <dependency Id="cdd64194-db7f-477e-8c53-cd93ffe88c81">
-            <classMoniker Id="52cb5bda-3cb3-4960-bb4c-2e1e1ce33665" LastKnownName="SpaceTreeIteration" />
+            <classMoniker Id="52cb5bda-3cb3-4960-bb4c-2e1e1ce33665" LastKnownName="SpaceTreeIterationCallback" />
             <elementDefinition Id="06280a46-315f-4360-a0a1-c14999c23745" />
           </dependency>
         </suppliersInternal>
         <targetEnds>
-          <association Id="d62850e3-e98c-4955-bac4-fd99d4aa4061" isDerived="false" sourceEndRoleName="SpaceTree" targetEndRoleName="SpaceTreeNode" isLeaf="false" isAbstract="false">
+          <association Id="d62850e3-e98c-4955-bac4-fd99d4aa4061" isDerived="false" sourceEndRoleName="SpaceTree" targetEndRoleName="root" isLeaf="false" isAbstract="false">
             <classMoniker Id="b79fa117-1aac-4ba6-ae1a-00edb74eb8dc" LastKnownName="SpaceTreeNode" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
@@ -42,7 +43,7 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
-                <memberEnd Id="77976f4a-cec3-42c1-924c-ea4e7c353241" name="SpaceTreeNode" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                <memberEnd Id="77976f4a-cec3-42c1-924c-ea4e7c353241" name="root" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
                   <elementDefinition Id="81fee853-56e1-4ce9-bc5d-9fc4b3f99cff" />
                 </memberEnd>
               </associationHasOwnedEnds>
@@ -89,8 +90,18 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
                 <parameter Id="fb2f05eb-ca30-4cb2-ae2a-3ac1877fa000" name="spaceTreeIteration" direction="In" isUnique="false">
                   <elementDefinition Id="030e740f-c7bf-46ae-a62a-2efd1421020c" />
                   <type_NamedElement>
-                    <referencedTypeMoniker Id="f80bce85-2e18-4569-b8c2-07569bf7ef8e" LastKnownName="SpaceTreeIteration" />
+                    <referencedTypeMoniker Id="f80bce85-2e18-4569-b8c2-07569bf7ef8e" LastKnownName="SpaceTreeIterationCallback" />
                   </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="a32702dc-f080-4577-89d8-714c4b711adf" name="getNodeByPoint" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="2bba2d0c-59db-4ba0-b51e-244c4800b7f6" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="d7ec062a-ae83-473d-a761-5c7b3ee023e0" name="Position" direction="In" isUnique="false">
+                  <elementDefinition Id="98358049-059f-4457-9700-39b73823d39e" />
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
@@ -101,8 +112,14 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
     <logicalClassDesignerModelHasTypes>
       <class Id="b79fa117-1aac-4ba6-ae1a-00edb74eb8dc" name="SpaceTreeNode" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="9c598c5d-0c3a-4942-839e-cd97c2769d97" />
+        <suppliersInternal>
+          <dependency Id="efeab5dc-4cdf-426b-a677-73a6944651a3">
+            <enumerationMoniker Id="96c4e74f-997c-487d-9213-6987ba4e67e6" LastKnownName="SubnodeIndex" />
+            <elementDefinition Id="113998ac-3a4d-4048-8846-4c61a10a41b2" />
+          </dependency>
+        </suppliersInternal>
         <targetEnds>
-          <association Id="1159b981-2ca8-43df-8c9a-ffd01c23f01a" isDerived="false" sourceEndRoleName="SpaceTreeNode" targetEndRoleName="SpaceTreeNode" isLeaf="false" isAbstract="false">
+          <association Id="1159b981-2ca8-43df-8c9a-ffd01c23f01a" isDerived="false" sourceEndRoleName="SpaceTreeNode" targetEndRoleName="subnodes" isLeaf="false" isAbstract="false">
             <classMoniker Id="b79fa117-1aac-4ba6-ae1a-00edb74eb8dc" LastKnownName="SpaceTreeNode" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
@@ -111,7 +128,7 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
-                <memberEnd Id="0bbff126-c584-4bd8-9771-38c0b312db77" name="SpaceTreeNode" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                <memberEnd Id="0bbff126-c584-4bd8-9771-38c0b312db77" name="subnodes" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
                   <lowerValueInternal>
                     <literalString Id="2106b024-7ba9-4a7c-8380-c3ed4c062306" name="Lower" value="4">
                       <elementDefinition Id="dcf79a3a-5fec-4451-a9d3-0738ec7cdfbf" />
@@ -146,6 +163,95 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
             <elementDefinition Id="440fcd2a-ad79-43ff-931a-2254550bbe3a" />
           </property>
         </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation Id="75a4afb6-2ebf-42b1-a1b6-8e5e783df7c2" name="hasSubnodes" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="81d11ac2-5f2a-44b7-9a3b-6a02d3961afb" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="c542a592-786f-41ee-a830-456af17935b7" direction="Return" isUnique="false">
+                  <elementDefinition Id="9ef989e7-4084-4c2b-a40c-9a07333c4984" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="315ec542-4795-4100-8889-5ca27c89adf4" LastKnownName="bool" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="f6ea8d86-a18c-465a-9881-0beb1f2baa70" name="addObject" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="b3f2669d-a716-41aa-a892-08ca5cb54a08" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="99ebc5a1-3e1f-44eb-8def-fd8e015bd9e9" name="spaceObject" direction="In" isUnique="false">
+                  <elementDefinition Id="02ea5aa1-0b38-47a0-90e3-5d64e9da70b7" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="914b4c2d-3acc-49d1-a78f-5bb474b8f177" LastKnownName="SpaceObject" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="3bd46501-8fe2-4709-a54f-53b14e62fad5" name="addMass" visibility="Private" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="f638ca02-2841-4ac6-ba59-34f6b33aa0f7" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="62db3020-eb92-4487-a38f-6837aac8ac8d" name="Mass" direction="In" isUnique="false">
+                  <elementDefinition Id="ec68e970-6226-4c3e-9f40-94ee99ae5854" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="70d8fced-af1b-4715-90db-8d921610c416" name="Position" direction="In" isUnique="false">
+                  <elementDefinition Id="7cf467c0-eeba-4b41-91cd-9a6c9a55f8ac" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="64e35e81-af57-48dc-87a5-e8108c5e071e" name="removeObject" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="c0c48d13-9e23-4778-a32c-8a89fcbbcd98" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="e4b49b1e-57c9-4d19-a7f2-4874e97c3643" name="spaceObject" direction="In" isUnique="false">
+                  <elementDefinition Id="7f27f526-21c5-44da-bdb4-791b48daa521" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="914b4c2d-3acc-49d1-a78f-5bb474b8f177" LastKnownName="SpaceObject" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="a96f276c-a430-4321-93bf-0cd7306b1299" name="removeMass" visibility="Private" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="dc5468af-0d2c-41b7-9584-e581f9caa6c4" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="9efc438a-4220-47ca-8b8a-a4c99eae2cb6" name="Mass" direction="In" isUnique="false">
+                  <elementDefinition Id="ffe28100-aab9-489d-9c22-022916e7ae27" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="ae4a1511-9c51-4beb-9f6c-ee6c6bdc5c95" name="Position" direction="In" isUnique="false">
+                  <elementDefinition Id="b78a75cf-29de-4cd5-a26c-a83ed91c2128" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="c5cdcb3d-deac-4287-84dc-e6fc0e449314" name="getSubnodeIndex" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="5028344e-f721-4b79-b278-1cdfb88eba14" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="46120882-4436-42b3-a8a4-e93958fedc0f" name="Position" direction="In" isUnique="false">
+                  <elementDefinition Id="58542ede-29f9-49fa-985f-4273c33750e0" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="f274c138-de6a-4b39-bfd4-36bad428d97b" direction="Return" isUnique="false">
+                  <elementDefinition Id="8b0131d4-f05b-4d4b-9aa1-c353f86d3f57" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="1b49cd9e-64cc-4c4c-98d2-eab0417a268d" LastKnownName="SubnodeIndex" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
     <packageHasNamedElement>
@@ -154,11 +260,11 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
       </referencedType>
     </packageHasNamedElement>
     <logicalClassDesignerModelHasTypes>
-      <class Id="52cb5bda-3cb3-4960-bb4c-2e1e1ce33665" name="SpaceTreeIteration" isAbstract="false" isLeaf="false" isActiveClass="false">
+      <class Id="52cb5bda-3cb3-4960-bb4c-2e1e1ce33665" name="SpaceTreeIterationCallback" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="46adc305-67da-414f-a042-d098feb2743d" />
         <suppliersInternal>
           <dependency Id="f4a10b0d-46d2-43be-8f2a-5a8a9034f5ef">
-            <enumerationMoniker Id="34cfad1c-7dda-4a4a-8f09-ac604d082725" LastKnownName="SpaceTreeIterationResult" />
+            <enumerationMoniker Id="34cfad1c-7dda-4a4a-8f09-ac604d082725" LastKnownName="SpaceTreeIterationCallbackResult" />
             <elementDefinition Id="b83d8066-4d98-4913-9e22-1999949ae21a" />
           </dependency>
         </suppliersInternal>
@@ -170,7 +276,7 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
                 <parameter Id="1e4c7438-3f1f-4546-95b4-2764f299f215" direction="Return" isUnique="false">
                   <elementDefinition Id="a421b5ea-10d6-4fe8-b56a-ec05e3cf7adb" />
                   <type_NamedElement>
-                    <referencedTypeMoniker Id="c6cf530e-7f4e-4365-94b0-fa63341df12f" LastKnownName="SpaceTreeIterationResult" />
+                    <referencedTypeMoniker Id="c6cf530e-7f4e-4365-94b0-fa63341df12f" LastKnownName="SpaceTreeIterationCallbackResult" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -188,7 +294,7 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <enumeration Id="34cfad1c-7dda-4a4a-8f09-ac604d082725" name="SpaceTreeIterationResult" isAbstract="false" isLeaf="false">
+      <enumeration Id="34cfad1c-7dda-4a4a-8f09-ac604d082725" name="SpaceTreeIterationCallbackResult" isAbstract="false" isLeaf="false">
         <elementDefinition Id="76093dd2-3034-4ac7-a158-9b410ced1a55" />
         <ownedLiterals>
           <enumerationLiteral Id="ff68a480-ed49-4df6-93c5-6e83c585c2c5" name="BREAK">
@@ -207,18 +313,47 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
       </enumeration>
     </logicalClassDesignerModelHasTypes>
     <packageHasNamedElement>
-      <referencedType Id="c6cf530e-7f4e-4365-94b0-fa63341df12f" name="SpaceTreeIterationResult" isAbstract="false" isLeaf="false" cachedFullName="Model::SpaceTreeIterationResult">
+      <referencedType Id="c6cf530e-7f4e-4365-94b0-fa63341df12f" name="SpaceTreeIterationCallbackResult" isAbstract="false" isLeaf="false" cachedFullName="Model::SpaceTreeIterationCallbackResult">
         <elementDefinition Id="76093dd2-3034-4ac7-a158-9b410ced1a55" />
       </referencedType>
     </packageHasNamedElement>
     <packageHasNamedElement>
-      <referencedType Id="f80bce85-2e18-4569-b8c2-07569bf7ef8e" name="SpaceTreeIteration" isAbstract="false" isLeaf="false" cachedFullName="Model::SpaceTreeIteration">
+      <referencedType Id="f80bce85-2e18-4569-b8c2-07569bf7ef8e" name="SpaceTreeIterationCallback" isAbstract="false" isLeaf="false" cachedFullName="Model::SpaceTreeIterationCallback">
         <elementDefinition Id="46adc305-67da-414f-a042-d098feb2743d" />
       </referencedType>
     </packageHasNamedElement>
     <packageHasNamedElement>
       <referencedType Id="87e0e45d-82a7-4001-8e93-2e7b901590fd" name="SpaceTreeNode" isAbstract="false" isLeaf="false" cachedFullName="Model::SpaceTreeNode">
         <elementDefinition Id="9c598c5d-0c3a-4942-839e-cd97c2769d97" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="315ec542-4795-4100-8889-5ca27c89adf4" name="bool" isAbstract="false" isLeaf="false" cachedFullName="bool">
+        <elementDefinition Id="8e641fa3-220b-4c1e-b542-7c08838fd7e2" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <enumeration Id="96c4e74f-997c-487d-9213-6987ba4e67e6" name="SubnodeIndex" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="74e72a5a-8ba7-457f-a83f-09d9f2dceb7f" />
+        <ownedLiterals>
+          <enumerationLiteral Id="8c2693f2-3caa-49e9-9bfa-036ffd4c2dbc" name="NorthWest">
+            <elementDefinition Id="b79b68bc-f846-4dc1-aabf-e3bf166edeba" />
+          </enumerationLiteral>
+          <enumerationLiteral Id="23f708de-f874-414f-9226-f2e00242e38c" name="NorthEast">
+            <elementDefinition Id="77a480eb-addb-4c67-a81a-df3fbc973822" />
+          </enumerationLiteral>
+          <enumerationLiteral Id="b30b46df-773d-4476-91ab-ddebc7f6c1c1" name="SouthWest">
+            <elementDefinition Id="aa2b53b3-b1b0-47fe-881d-1b5025fd8796" />
+          </enumerationLiteral>
+          <enumerationLiteral Id="d9160218-bcd5-4b8a-9eed-f0be2b6f751a" name="SouthEast">
+            <elementDefinition Id="88e972da-4d34-48dc-8a63-f0b6820ec906" />
+          </enumerationLiteral>
+        </ownedLiterals>
+      </enumeration>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="1b49cd9e-64cc-4c4c-98d2-eab0417a268d" name="SubnodeIndex" isAbstract="false" isLeaf="false" cachedFullName="Model::SubnodeIndex">
+        <elementDefinition Id="74e72a5a-8ba7-457f-a83f-09d9f2dceb7f" />
       </referencedType>
     </packageHasNamedElement>
   </packagedElements>
