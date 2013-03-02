@@ -2258,6 +2258,18 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="a6257f64-8f37-4f25-9c80-b4aa78aa7c0f"
+                  direction="Return">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="8e641fa3-220b-4c1e-b542-7c08838fd7e2"
+                      LastKnownName="bool"
+                      LastKnownLocation="Model.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
           <operation
@@ -2357,6 +2369,56 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
                 <parameter
                   Id="8b0131d4-f05b-4d4b-9aa1-c353f86d3f57"
                   direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <enumerationMoniker
+                      Id="74e72a5a-8ba7-457f-a83f-09d9f2dceb7f"
+                      LastKnownName="SubnodeIndex"
+                      LastKnownLocation="Model.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="1bf515c8-23e8-4631-929a-a81d841a7479"
+            name="createSubnode"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="c89f5a2c-2c57-4aba-827b-f6b883b1ffba"
+                  name="index"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <enumerationMoniker
+                      Id="74e72a5a-8ba7-457f-a83f-09d9f2dceb7f"
+                      LastKnownName="SubnodeIndex"
+                      LastKnownLocation="Model.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="f41bc9b0-b5a6-47f3-9766-8d0cda305607"
+            name="removeSubnode"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="36fc97f1-0f50-427f-88c2-b1818406d166"
+                  name="index"
+                  direction="In"
                   isUnique="false">
                   <type_NamedElement>
                     <enumerationMoniker
@@ -2470,16 +2532,19 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
         <ownedLiterals>
           <enumerationLiteral
             Id="b79b68bc-f846-4dc1-aabf-e3bf166edeba"
-            name="NorthWest" />
+            name="NORTH_WEST" />
           <enumerationLiteral
             Id="77a480eb-addb-4c67-a81a-df3fbc973822"
-            name="NorthEast" />
+            name="NORTH_EAST" />
           <enumerationLiteral
             Id="aa2b53b3-b1b0-47fe-881d-1b5025fd8796"
-            name="SouthWest" />
+            name="SOUTH_WEST" />
           <enumerationLiteral
             Id="88e972da-4d34-48dc-8a63-f0b6820ec906"
-            name="SouthEast" />
+            name="SOUTH_EAST" />
+          <enumerationLiteral
+            Id="e50f843a-4016-4655-8d81-742c336488e9"
+            name="INVALID" />
         </ownedLiterals>
       </enumeration>
     </packageHasNamedElement>

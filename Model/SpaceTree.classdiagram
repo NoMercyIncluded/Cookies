@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="b851377e-f5d8-459a-9303-22a5b3492a4d" name="UMLClassDiagram1" linkedPackageId="272f2d07-ae8b-4544-a7cd-3d4c713c26a6" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="b851377e-f5d8-459a-9303-22a5b3492a4d" name="SpaceTree" linkedPackageId="272f2d07-ae8b-4544-a7cd-3d4c713c26a6" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
   <ownedCommentsInternal>
     <comment Id="2b936cbc-e108-4a5a-98ea-e6d8f57d98d8">
       <elementDefinition Id="48d67b2b-0b1b-4198-9ce4-6dcf05ab2912" />
@@ -188,6 +188,14 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="04774dfc-fb2f-4b65-b8f4-cb598c6ce429" direction="Return">
+                  <elementDefinition Id="a6257f64-8f37-4f25-9c80-b4aa78aa7c0f" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="bde6c23e-1041-42c4-9aa3-fb924abc8581" LastKnownName="bool" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
           <operation Id="3bd46501-8fe2-4709-a54f-53b14e62fad5" name="addMass" visibility="Private" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
@@ -244,6 +252,32 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
               <operationHasOwnedParameters>
                 <parameter Id="f274c138-de6a-4b39-bfd4-36bad428d97b" direction="Return" isUnique="false">
                   <elementDefinition Id="8b0131d4-f05b-4d4b-9aa1-c353f86d3f57" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="1b49cd9e-64cc-4c4c-98d2-eab0417a268d" LastKnownName="SubnodeIndex" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="504264e6-035e-418d-9e80-33cdba82864d" name="createSubnode" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="1bf515c8-23e8-4631-929a-a81d841a7479" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="62bfe44f-fbd1-419f-9fb9-fe355e027c5a" name="index" direction="In" isUnique="false">
+                  <elementDefinition Id="c89f5a2c-2c57-4aba-827b-f6b883b1ffba" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="1b49cd9e-64cc-4c4c-98d2-eab0417a268d" LastKnownName="SubnodeIndex" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="d904e91a-eb36-4af0-a47f-0fc75bc9428a" name="removeSubnode" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="f41bc9b0-b5a6-47f3-9766-8d0cda305607" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="6bc3e5be-ba49-4612-9a9b-d2291947df44" name="index" direction="In" isUnique="false">
+                  <elementDefinition Id="36fc97f1-0f50-427f-88c2-b1818406d166" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="1b49cd9e-64cc-4c4c-98d2-eab0417a268d" LastKnownName="SubnodeIndex" />
                   </type_NamedElement>
@@ -336,17 +370,20 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
       <enumeration Id="96c4e74f-997c-487d-9213-6987ba4e67e6" name="SubnodeIndex" isAbstract="false" isLeaf="false">
         <elementDefinition Id="74e72a5a-8ba7-457f-a83f-09d9f2dceb7f" />
         <ownedLiterals>
-          <enumerationLiteral Id="8c2693f2-3caa-49e9-9bfa-036ffd4c2dbc" name="NorthWest">
+          <enumerationLiteral Id="8c2693f2-3caa-49e9-9bfa-036ffd4c2dbc" name="NORTH_WEST">
             <elementDefinition Id="b79b68bc-f846-4dc1-aabf-e3bf166edeba" />
           </enumerationLiteral>
-          <enumerationLiteral Id="23f708de-f874-414f-9226-f2e00242e38c" name="NorthEast">
+          <enumerationLiteral Id="23f708de-f874-414f-9226-f2e00242e38c" name="NORTH_EAST">
             <elementDefinition Id="77a480eb-addb-4c67-a81a-df3fbc973822" />
           </enumerationLiteral>
-          <enumerationLiteral Id="b30b46df-773d-4476-91ab-ddebc7f6c1c1" name="SouthWest">
+          <enumerationLiteral Id="b30b46df-773d-4476-91ab-ddebc7f6c1c1" name="SOUTH_WEST">
             <elementDefinition Id="aa2b53b3-b1b0-47fe-881d-1b5025fd8796" />
           </enumerationLiteral>
-          <enumerationLiteral Id="d9160218-bcd5-4b8a-9eed-f0be2b6f751a" name="SouthEast">
+          <enumerationLiteral Id="d9160218-bcd5-4b8a-9eed-f0be2b6f751a" name="SOUTH_EAST">
             <elementDefinition Id="88e972da-4d34-48dc-8a63-f0b6820ec906" />
+          </enumerationLiteral>
+          <enumerationLiteral Id="eaf15907-6183-4c35-8eea-ed47c09cc275" name="INVALID">
+            <elementDefinition Id="e50f843a-4016-4655-8d81-742c336488e9" />
           </enumerationLiteral>
         </ownedLiterals>
       </enumeration>
@@ -354,6 +391,11 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
     <packageHasNamedElement>
       <referencedType Id="1b49cd9e-64cc-4c4c-98d2-eab0417a268d" name="SubnodeIndex" isAbstract="false" isLeaf="false" cachedFullName="Model::SubnodeIndex">
         <elementDefinition Id="74e72a5a-8ba7-457f-a83f-09d9f2dceb7f" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="bde6c23e-1041-42c4-9aa3-fb924abc8581" name="bool" isAbstract="false" isLeaf="false" cachedFullName="bool">
+        <elementDefinition Id="8e641fa3-220b-4c1e-b542-7c08838fd7e2" />
       </referencedType>
     </packageHasNamedElement>
   </packagedElements>
