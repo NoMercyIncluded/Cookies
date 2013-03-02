@@ -2080,6 +2080,68 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
+          <operation
+            Id="cfa97a3e-0d2b-4d8c-9a02-e78c5ab29045"
+            name="queryObjects"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="e7722cc2-7bfe-4172-932a-af2adeb5eed4"
+                  name="Position1"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="2c1d4570-115c-4a3b-92a2-41e8e6154635"
+                  name="Position2"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="0432f3ca-a763-4e31-911d-2376a5a99b4a"
+                  name="type"
+                  direction="In"
+                  isUnique="false">
+                  <defaultValue>
+                    <literalString
+                      Id="db9ef138-0edf-452a-984f-ebd4b1509a5e"
+                      value="SpaceObject" />
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="108bb9d8-5f45-47be-bf62-2968a0e9a49a"
+                  direction="Return">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="c10a0e26-ab6e-4dfe-98af-a31524762b25"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="7951d87a-6933-457d-81e6-6e030e3a8fc8"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="62b64ba8-cd33-4f98-a9cc-10511c7827de"
+                      LastKnownName="SpaceObject"
+                      LastKnownLocation="Model.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
         </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
@@ -2236,43 +2298,6 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
             </ownedParameters>
           </operation>
           <operation
-            Id="b3f2669d-a716-41aa-a892-08ca5cb54a08"
-            name="addObject"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <ownedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="02ea5aa1-0b38-47a0-90e3-5d64e9da70b7"
-                  name="spaceObject"
-                  direction="In"
-                  isUnique="false">
-                  <type_NamedElement>
-                    <classMoniker
-                      Id="62b64ba8-cd33-4f98-a9cc-10511c7827de"
-                      LastKnownName="SpaceObject"
-                      LastKnownLocation="Model.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="a6257f64-8f37-4f25-9c80-b4aa78aa7c0f"
-                  direction="Return">
-                  <type_NamedElement>
-                    <undefinedTypeMoniker
-                      Id="8e641fa3-220b-4c1e-b542-7c08838fd7e2"
-                      LastKnownName="bool"
-                      LastKnownLocation="Model.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-            </ownedParameters>
-          </operation>
-          <operation
             Id="f638ca02-2841-4ac6-ba59-34f6b33aa0f7"
             name="addMass"
             visibility="Private"
@@ -2295,31 +2320,6 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
                   name="Position"
                   direction="In"
                   isUnique="false" />
-              </operationHasOwnedParameters>
-            </ownedParameters>
-          </operation>
-          <operation
-            Id="c0c48d13-9e23-4778-a32c-8a89fcbbcd98"
-            name="removeObject"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <ownedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="7f27f526-21c5-44da-bdb4-791b48daa521"
-                  name="spaceObject"
-                  direction="In"
-                  isUnique="false">
-                  <type_NamedElement>
-                    <classMoniker
-                      Id="62b64ba8-cd33-4f98-a9cc-10511c7827de"
-                      LastKnownName="SpaceObject"
-                      LastKnownLocation="Model.uml" />
-                  </type_NamedElement>
-                </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
@@ -2424,6 +2424,30 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
                     <enumerationMoniker
                       Id="74e72a5a-8ba7-457f-a83f-09d9f2dceb7f"
                       LastKnownName="SubnodeIndex"
+                      LastKnownLocation="Model.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="1de3dff1-d78f-4a4d-9f17-264d8ea769b1"
+            name="isEmpty"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="5baaeafa-b2dd-49a6-8e07-f86535c32e52"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="8e641fa3-220b-4c1e-b542-7c08838fd7e2"
+                      LastKnownName="bool"
                       LastKnownLocation="Model.uml" />
                   </type_NamedElement>
                 </parameter>

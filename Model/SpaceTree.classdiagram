@@ -106,6 +106,49 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
+          <operation Id="7ec7722d-f0f7-4b29-a4b7-d028ac6b914f" name="queryObjects" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="cfa97a3e-0d2b-4d8c-9a02-e78c5ab29045" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="a019a6d8-43a5-4167-8eb8-4aa4b25bd1bf" name="Position1" direction="In" isUnique="false">
+                  <elementDefinition Id="e7722cc2-7bfe-4172-932a-af2adeb5eed4" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="8060e5dc-15ba-43d8-8bc6-2979c893055a" name="Position2" direction="In" isUnique="false">
+                  <elementDefinition Id="2c1d4570-115c-4a3b-92a2-41e8e6154635" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="92bcc917-e1bb-4e57-80fa-7416fb1b5e21" name="type" direction="In" isUnique="false">
+                  <elementDefinition Id="0432f3ca-a763-4e31-911d-2376a5a99b4a" />
+                  <defaultValue>
+                    <literalString Id="c86c06ae-5638-443e-897e-8dd78299277e" value="SpaceObject">
+                      <elementDefinition Id="db9ef138-0edf-452a-984f-ebd4b1509a5e" />
+                    </literalString>
+                  </defaultValue>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="1b423c77-9292-48d9-9291-2a25ec42daa4" direction="Return">
+                  <lowerValueInternal>
+                    <literalString Id="cb5ead53-5aca-46e8-8bfa-74b75772cb67" name="Lower" value="*">
+                      <elementDefinition Id="c10a0e26-ab6e-4dfe-98af-a31524762b25" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="415763ec-5748-471f-8fd8-943fbf719d73" name="Upper" value="*">
+                      <elementDefinition Id="7951d87a-6933-457d-81e6-6e030e3a8fc8" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="108bb9d8-5f45-47be-bf62-2968a0e9a49a" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="6cf9051a-63b2-4150-85ba-abe86366310c" LastKnownName="SpaceObject" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
         </ownedOperationsInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
@@ -177,27 +220,6 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
-          <operation Id="f6ea8d86-a18c-465a-9881-0beb1f2baa70" name="addObject" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
-            <elementDefinition Id="b3f2669d-a716-41aa-a892-08ca5cb54a08" />
-            <ownedParameters>
-              <operationHasOwnedParameters>
-                <parameter Id="99ebc5a1-3e1f-44eb-8def-fd8e015bd9e9" name="spaceObject" direction="In" isUnique="false">
-                  <elementDefinition Id="02ea5aa1-0b38-47a0-90e3-5d64e9da70b7" />
-                  <type_NamedElement>
-                    <referencedTypeMoniker Id="914b4c2d-3acc-49d1-a78f-5bb474b8f177" LastKnownName="SpaceObject" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter Id="04774dfc-fb2f-4b65-b8f4-cb598c6ce429" direction="Return">
-                  <elementDefinition Id="a6257f64-8f37-4f25-9c80-b4aa78aa7c0f" />
-                  <type_NamedElement>
-                    <referencedTypeMoniker Id="bde6c23e-1041-42c4-9aa3-fb924abc8581" LastKnownName="bool" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-            </ownedParameters>
-          </operation>
           <operation Id="3bd46501-8fe2-4709-a54f-53b14e62fad5" name="addMass" visibility="Private" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="f638ca02-2841-4ac6-ba59-34f6b33aa0f7" />
             <ownedParameters>
@@ -209,19 +231,6 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
               <operationHasOwnedParameters>
                 <parameter Id="70d8fced-af1b-4715-90db-8d921610c416" name="Position" direction="In" isUnique="false">
                   <elementDefinition Id="7cf467c0-eeba-4b41-91cd-9a6c9a55f8ac" />
-                </parameter>
-              </operationHasOwnedParameters>
-            </ownedParameters>
-          </operation>
-          <operation Id="64e35e81-af57-48dc-87a5-e8108c5e071e" name="removeObject" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
-            <elementDefinition Id="c0c48d13-9e23-4778-a32c-8a89fcbbcd98" />
-            <ownedParameters>
-              <operationHasOwnedParameters>
-                <parameter Id="e4b49b1e-57c9-4d19-a7f2-4874e97c3643" name="spaceObject" direction="In" isUnique="false">
-                  <elementDefinition Id="7f27f526-21c5-44da-bdb4-791b48daa521" />
-                  <type_NamedElement>
-                    <referencedTypeMoniker Id="914b4c2d-3acc-49d1-a78f-5bb474b8f177" LastKnownName="SpaceObject" />
-                  </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
@@ -280,6 +289,19 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
                   <elementDefinition Id="36fc97f1-0f50-427f-88c2-b1818406d166" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="1b49cd9e-64cc-4c4c-98d2-eab0417a268d" LastKnownName="SubnodeIndex" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="cf0258f9-5f8e-4434-85f7-bd45ea08f0a9" name="isEmpty" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="1de3dff1-d78f-4a4d-9f17-264d8ea769b1" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="7f38e7b1-3d5d-4a32-9e73-83ffba074212" direction="Return" isUnique="false">
+                  <elementDefinition Id="5baaeafa-b2dd-49a6-8e07-f86535c32e52" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="315ec542-4795-4100-8889-5ca27c89adf4" LastKnownName="bool" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -394,8 +416,8 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
       </referencedType>
     </packageHasNamedElement>
     <packageHasNamedElement>
-      <referencedType Id="bde6c23e-1041-42c4-9aa3-fb924abc8581" name="bool" isAbstract="false" isLeaf="false" cachedFullName="bool">
-        <elementDefinition Id="8e641fa3-220b-4c1e-b542-7c08838fd7e2" />
+      <referencedType Id="6cf9051a-63b2-4150-85ba-abe86366310c" name="SpaceObject" isAbstract="false" isLeaf="false" cachedFullName="Model::SpaceObject">
+        <elementDefinition Id="62b64ba8-cd33-4f98-a9cc-10511c7827de" />
       </referencedType>
     </packageHasNamedElement>
   </packagedElements>
