@@ -249,6 +249,17 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
             isDerivedUnion="false"
             aggregation="None"
             isComposite="false" />
+          <property
+            Id="61c6361e-0f14-4f3e-881b-09c0c7d5054f"
+            name="OldPOsition"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
         </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation
@@ -2142,6 +2153,92 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
+          <operation
+            Id="30d2cbb7-a57d-4fd4-bf64-47657269196b"
+            name="addMassToBranch"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="ea658fd1-a5e2-4e75-a45a-02ea9162cbfb"
+                  name="node"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="9c598c5d-0c3a-4942-839e-cd97c2769d97"
+                      LastKnownName="SpaceTreeNode"
+                      LastKnownLocation="Model.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="81328434-0b21-4d10-9dab-cfdeffb0c0a6"
+                  name="Mass"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="32561726-28f6-49da-9679-4d793e0d6c50"
+                  name="Position"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="5286ab83-3350-406c-8572-beabe5079b70"
+            name="removeMassFromBranch"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="d38c48aa-8a21-41aa-bc12-2acc33c836c1"
+                  name="node"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="9c598c5d-0c3a-4942-839e-cd97c2769d97"
+                      LastKnownName="SpaceTreeNode"
+                      LastKnownLocation="Model.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="4d31d726-ddbb-4ac5-bf94-fd3f98b40db0"
+                  name="Mass"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="b594c831-265b-4dfe-a0bd-3103970d2e2f"
+                  name="Position"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="c03ef7a0-86a8-4ff7-aab9-37ee26e9f55e"
+            name="updatePositions"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
         </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
@@ -2165,7 +2262,7 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
           <association
             Id="8c815d3d-57ec-4819-9559-50fc8e82f17b"
             isDerived="false"
-            sourceEndRoleName="SpaceTreeNode"
+            sourceEndRoleName="parent"
             targetEndRoleName="subnodes"
             isLeaf="false"
             isAbstract="false">
@@ -2177,7 +2274,7 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="84eb193f-3810-40c0-a393-436450c64ebb"
-                  name="SpaceTreeNode"
+                  name="parent"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -2211,6 +2308,45 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
                       value="4" />
                   </upperValueInternal>
                 </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="e819312f-6df2-4442-94f4-a94d2736ee3c"
+            isDerived="false"
+            sourceEndRoleName="SpaceTreeNode"
+            targetEndRoleName="SpaceObject"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="62b64ba8-cd33-4f98-a9cc-10511c7827de"
+              LastKnownName="SpaceObject"
+              LastKnownLocation="Model.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="71c6f45a-12e0-4b40-ab00-31cfdf6b282c"
+                  name="SpaceTreeNode"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Shared"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="3660b1ca-9110-4358-8454-b45ff1ae8507"
+                  name="SpaceObject"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
@@ -2260,17 +2396,6 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
             isDerivedUnion="false"
             aggregation="None"
             isComposite="false" />
-          <property
-            Id="440fcd2a-ad79-43ff-931a-2254550bbe3a"
-            name="SpaceObject"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false" />
         </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation
@@ -2300,7 +2425,6 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
           <operation
             Id="f638ca02-2841-4ac6-ba59-34f6b33aa0f7"
             name="addMass"
-            visibility="Private"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"
@@ -2326,7 +2450,6 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
           <operation
             Id="dc5468af-0d2c-41b7-9584-e581f9caa6c4"
             name="removeMass"
-            visibility="Private"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"
@@ -2454,6 +2577,36 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
+          <operation
+            Id="30c58a89-adba-4ada-b43d-8fc52bd895ee"
+            name="containsPosition"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="47599e2f-bcd5-4276-9e83-572dface2b8f"
+                  name="Position"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="c45c05cb-5e5f-4135-874c-21e543a972da"
+                  direction="Return">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="8e641fa3-220b-4c1e-b542-7c08838fd7e2"
+                      LastKnownName="bool"
+                      LastKnownLocation="Model.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
         </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
@@ -2571,6 +2724,11 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
             name="INVALID" />
         </ownedLiterals>
       </enumeration>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="ed56e749-7ac8-4e00-9911-2f2e9c075a67"
+        name="SPaceTreeNode" />
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType
