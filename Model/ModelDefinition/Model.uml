@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
   dslVersion="1.0.0.0"
   Id="8bdafaf5-c5f4-4252-b9f5-4466996b0553"
   name="Model" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -204,7 +204,7 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
             isComposite="false" />
           <property
             Id="83e8e1b5-65c7-4abd-a9bf-f76f03369644"
-            name="PhisicsBody"
+            name="PhysicsBody"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
@@ -222,7 +222,7 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
           </property>
           <property
             Id="83623542-adcb-4fee-a55d-bf4d8004f549"
-            name="PhisicsWorld"
+            name="GameSpace"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
@@ -232,9 +232,9 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
             aggregation="None"
             isComposite="false">
             <type_NamedElement>
-              <undefinedTypeMoniker
-                Id="6c114a7f-8077-4b61-8905-5176012afe81"
-                LastKnownName="World"
+              <classMoniker
+                Id="aa6e5bdc-ad62-49df-aee8-f8ed85726544"
+                LastKnownName="Space"
                 LastKnownLocation="Model.uml" />
             </type_NamedElement>
           </property>
@@ -279,57 +279,33 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="00693a29-480c-4305-8adc-321f6cc713c7"
-                  name="phisicsWorld"
-                  direction="In">
+                  Id="bedad4e0-4976-44d5-a7c4-ff02fc1f51a7"
+                  name="PhisicsBody"
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <undefinedTypeMoniker
-                      Id="6c114a7f-8077-4b61-8905-5176012afe81"
-                      LastKnownName="World"
+                      Id="e63dd0cd-5f82-4486-8439-7cf679e27754"
+                      LastKnownName="Body"
                       LastKnownLocation="Model.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="01492a6b-a2f6-4c96-a147-893e1b8bb875"
-                  name="density"
-                  direction="In">
-                  <type_NamedElement>
-                    <undefinedTypeMoniker
-                      Id="95e06532-1bfa-4ecc-85d0-e94516a54b0a"
-                      LastKnownName="float"
-                      LastKnownLocation="Model.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="31c27285-6103-4223-a9d9-997332ba47d7"
-                  name="Position"
-                  direction="In">
-                  <type_NamedElement>
-                    <undefinedTypeMoniker
-                      Id="70a8cad3-b553-4407-b422-1718e0e9fc09"
-                      LastKnownName="Vector2"
-                      LastKnownLocation="Model.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="f8201522-91c9-4818-b887-19a4900adc09"
+                  Id="3cfcada7-3d8c-4fed-908f-ce3be69000da"
                   name="shapeDefinition"
-                  direction="In">
+                  direction="In"
+                  isUnique="false">
                   <lowerValueInternal>
                     <literalString
-                      Id="79025c33-7f6a-41b1-a03a-116d4e11f268"
+                      Id="1d6a5c6d-f82b-465f-8d60-3f6370a69d51"
                       name="Lower"
                       value="*" />
                   </lowerValueInternal>
                   <upperValueInternal>
                     <literalString
-                      Id="17c6f32e-e138-460b-8fdc-4eb7aca46ddb"
+                      Id="370c37bf-e953-4a04-af00-8339ba7f51e0"
                       name="Upper"
                       value="*" />
                   </upperValueInternal>
@@ -561,14 +537,6 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
       <undefinedType
         Id="e63dd0cd-5f82-4486-8439-7cf679e27754"
         name="Body" />
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <class
-        Id="da21b81c-3ebb-47e7-b069-d936eda9dc3e"
-        name="ForceDefinition"
-        isAbstract="false"
-        isLeaf="false"
-        isActiveClass="false" />
     </packageHasNamedElement>
     <packageHasNamedElement>
       <undefinedType
@@ -1413,14 +1381,6 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
-      <class
-        Id="9cd56a35-5767-46a4-a32f-08e4c7682ad7"
-        name="Class1"
-        isAbstract="false"
-        isLeaf="false"
-        isActiveClass="false" />
-    </packageHasNamedElement>
-    <packageHasNamedElement>
       <Interface
         Id="90b7a6b0-a044-4a11-a71c-2b7d7455c238"
         name="IShield"
@@ -1807,22 +1767,6 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
         name="int" />
     </packageHasNamedElement>
     <packageHasNamedElement>
-      <class
-        Id="b56dd335-82d5-4643-9698-a1058a9d7465"
-        name="AmmoType"
-        isAbstract="false"
-        isLeaf="false"
-        isActiveClass="false" />
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <class
-        Id="007e4cc5-2522-4b1b-b5a1-bb5110506e15"
-        name="WeaponType"
-        isAbstract="false"
-        isLeaf="false"
-        isActiveClass="false" />
-    </packageHasNamedElement>
-    <packageHasNamedElement>
       <enumeration
         Id="54ba0647-b01e-4ff4-8e51-f7e1a53635f3"
         name="AmmoType"
@@ -1912,13 +1856,6 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
             isComposite="false" />
         </ownedAttributesInternal>
       </class>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <Interface
-        Id="29b249d3-4a13-48bf-a57d-0cb5293c1974"
-        name="Interface1"
-        isAbstract="false"
-        isLeaf="false" />
     </packageHasNamedElement>
     <packageHasNamedElement>
       <enumeration
@@ -2075,7 +2012,7 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
           </operation>
           <operation
             Id="2bba2d0c-59db-4ba0-b51e-244c4800b7f6"
-            name="getNodeByPoint"
+            name="getNodeByPosition"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"
@@ -2729,6 +2666,254 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
       <undefinedType
         Id="ed56e749-7ac8-4e00-9911-2f2e9c075a67"
         name="SPaceTreeNode" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="aa6e5bdc-ad62-49df-aee8-f8ed85726544"
+        name="Space"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="9813c444-fae0-4629-bf45-23552355f871"
+            isDerived="false"
+            sourceEndRoleName="Space"
+            targetEndRoleName="SpaceTree"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="7575b971-008f-410d-9a85-5ec7d1e8e1f5"
+              LastKnownName="SpaceTree"
+              LastKnownLocation="Model.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="b60be22a-7f83-4c74-9165-b8c50ccb5175"
+                  name="Space"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Composite"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="5dcd15ac-f7d6-4566-9d83-f62b10ac2fce"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="45117965-1a8b-4a0c-a29c-10a5a6e83d82"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="25da8c7b-225b-4b4c-b729-17c9830ec3a8"
+                  name="SpaceTree"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="true">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="5da2311f-7070-4bd3-b769-e6558f16c232"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="ffa7e678-3b41-41e1-99af-618dac6ef871"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="5b8f834b-2bb2-45a2-afca-0d97c95356f5"
+            name="World"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="51c2eb21-b198-4991-ac66-5b4e5edc43db"
+            name="spaceObjects"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="3a10e214-675c-4c24-8c36-3efbb8fb5527"
+                LastKnownName="SpaceObject[]"
+                LastKnownLocation="Model.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="03176101-a09b-4d0e-b72b-0ccb0510c136"
+            name="Size"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="95e06532-1bfa-4ecc-85d0-e94516a54b0a"
+                LastKnownName="float"
+                LastKnownLocation="Model.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="cb915c89-7ec6-4d22-be40-ab612113c84a"
+            name="applyGravityForces"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="79e4b3f4-9870-43ba-b6aa-8e6057cd3b7b"
+            name="createObject"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="ad28d06b-b5c0-4a71-bac0-892a6888282c"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="62b64ba8-cd33-4f98-a9cc-10511c7827de"
+                      LastKnownName="SpaceObject"
+                      LastKnownLocation="Model.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="03bad6cf-2b84-4e28-af5e-b1f042580c87"
+                  name="shapePoints"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="1420f23c-d08e-435d-bbed-9a291e18f51d"
+                      LastKnownName="Vector2[]"
+                      LastKnownLocation="Model.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="af5e28c3-7322-4869-9685-3a2577becaea"
+                  name="density"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="95e06532-1bfa-4ecc-85d0-e94516a54b0a"
+                      LastKnownName="float"
+                      LastKnownLocation="Model.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="717af644-db78-4716-96db-2e001c773ebf"
+                  name="position"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="70a8cad3-b553-4407-b422-1718e0e9fc09"
+                      LastKnownName="Vector2"
+                      LastKnownLocation="Model.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="d13e0668-619f-49d8-b69e-775e5f9de0d2"
+                  name="spaceObjectType"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="de554c94-2af8-4a63-81be-fd89cfb86272"
+                      LastKnownName="Type"
+                      LastKnownLocation="Model.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="37b8724e-abd2-4dd9-bcce-283141abbe9f"
+            name="destroyObject"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="03e801e6-646a-4cc8-81c3-30b75c486d0d"
+                  name="SpaceObject"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="1420f23c-d08e-435d-bbed-9a291e18f51d"
+        name="Vector2[]" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="de554c94-2af8-4a63-81be-fd89cfb86272"
+        name="Type" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="3a10e214-675c-4c24-8c36-3efbb8fb5527"
+        name="SpaceObject[]" />
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType

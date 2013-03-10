@@ -110,6 +110,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="Space.cs" />
+    <Compile Include="SpaceTreeNode.cs" />
+    <Compile Include="SpaceObject.cs" />
+    <Compile Include="SpaceTree.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />
