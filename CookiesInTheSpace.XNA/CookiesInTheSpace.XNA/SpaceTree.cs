@@ -72,8 +72,10 @@ namespace CookiesInTheSpace.XNA
                     s1 = currentNode.getSubnodeIndex(spaceObject.Position);
                     s2 = currentNode.getSubnodeIndex(oldObject.Position);
 
-                    currentNode.createSubnode(s1);
+                    currentNode = currentNode.createSubnode(s1);
                 } while (s1 == s2);
+                
+                currentNode = currentNode.Parent;
 
                 //When we have unique SubNodeIndex for both objects just create additional subnode...
                 currentNode.createSubnode(s2);
