@@ -91,7 +91,17 @@ namespace CookiesInTheSpace.XNA
         { 
             SpaceTreeNode node = getNodeByPosition(spaceObject.Position);
 
-            //please don't delete root node
+            //Remove object from node if it is the right one
+            if (node.spaceObject == spaceObject)
+                node.spaceObject = null;
+
+            //Go up deleting nodes behind (except root node)
+            while (node.isEmpty() && node != root) 
+            {
+                SubnodeIndex idx = node.Parent.getSubnodeIndex(node.Position);
+                node = node.Parent;
+                node.removeSubnode(idx);
+            }
         }
 
         public SpaceTreeNode getNodeByPosition(Vector2 Position) 
@@ -114,9 +124,9 @@ namespace CookiesInTheSpace.XNA
             return node;
         }
 
-        public delegate SpaceTreeIterationCallbackResult SpaceTreeIterationCallback(SpaceTreeNode spaceTreeNode);
+        public delegate SpaceTreeIterationCallbackResult SpaceTreeIterationCallback(SpaceTreeNode spaceTreeNode, object userData);
 
-        public void iterateTree(SpaceTreeIterationCallback callback)
+        public void iterateTree(SpaceTreeIterationCallback callback, object userData)
         {
             SpaceTreeNode node = root;
             SpaceTreeIterationCallbackResult res=SpaceTreeIterationCallbackResult.BREAK;
@@ -124,7 +134,7 @@ namespace CookiesInTheSpace.XNA
             //ItarationStart!
             do{
                 //First of all call callback from user on current node
-                res=callback(node);
+                res = callback(node, userData);
 
                 //if user wants us to go deeper
                 if ((int)res >= (int)SpaceTreeIterationCallbackResult.CONTINUE_STEP_INTO)
@@ -215,12 +225,13 @@ namespace CookiesInTheSpace.XNA
 
         public SpaceObject[] queryObjects(Vector2 Position1, Vector2 Position2, Type spaceObjectTypeFilter)
         {
+            //TODO: implement
             return new SpaceObject[1];
         }
 
         public void updatePositions()
         {
-        
+            //TODO: implement
         }
 
     }

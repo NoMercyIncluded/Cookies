@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="b851377e-f5d8-459a-9303-22a5b3492a4d" name="SpaceTree" linkedPackageId="272f2d07-ae8b-4544-a7cd-3d4c713c26a6" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="b851377e-f5d8-459a-9303-22a5b3492a4d" name="SpaceTree" linkedPackageId="272f2d07-ae8b-4544-a7cd-3d4c713c26a6" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
   <ownedCommentsInternal>
     <comment Id="2b936cbc-e108-4a5a-98ea-e6d8f57d98d8">
       <elementDefinition Id="48d67b2b-0b1b-4198-9ce4-6dcf05ab2912" />
@@ -417,10 +417,18 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="d6ec590d-dd93-480f-b1a5-4509573f3287" name="spaceNode" direction="In" isUnique="false">
-                  <elementDefinition Id="88684ff9-fd41-4ba4-9510-c75b10446377" />
+                <parameter Id="eef956c5-8c9b-49e2-9af4-88301373ca35" name="spaceNode" direction="In" isUnique="false">
+                  <elementDefinition Id="48def6f6-deb2-4da9-844a-7804fadee3ca" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="87e0e45d-82a7-4001-8e93-2e7b901590fd" LastKnownName="SpaceTreeNode" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="8cdbd5ec-67ab-4adf-a7c9-618fa8249759" name="userData" direction="In" isUnique="false">
+                  <elementDefinition Id="83c6e5f4-cbeb-4dd0-95ac-80a2ec3b3193" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="afad7452-3fb3-4cd9-b0e6-5faac4918ec4" LastKnownName="object" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -758,6 +766,11 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
     <packageHasNamedElement>
       <referencedType Id="9749ac9a-895d-4458-86ba-e6f28e2eccf7" name="SpaceObject[]" isAbstract="false" isLeaf="false" cachedFullName="SpaceObject[]">
         <elementDefinition Id="3a10e214-675c-4c24-8c36-3efbb8fb5527" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="afad7452-3fb3-4cd9-b0e6-5faac4918ec4" name="object" isAbstract="false" isLeaf="false" cachedFullName="object">
+        <elementDefinition Id="9a7feee5-1c55-468a-9551-215eea136823" />
       </referencedType>
     </packageHasNamedElement>
   </packagedElements>

@@ -18,12 +18,13 @@ namespace CookiesInTheSpace.XNA
 
         public SpaceTreeIterationCallbackResult applyGravityForcesCallback(SpaceTreeNode spaceTreeNode) 
         {
+            //TODO: implement
             return SpaceTreeIterationCallbackResult.BREAK;
         }
 
         public void applyGravityForces()
         {
-            
+            //TODO: implement
         }
 
         public SpaceObject createObject(Vector2[] shapePoints, float density, Vector2 position)

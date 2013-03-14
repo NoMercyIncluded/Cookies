@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
   dslVersion="1.0.0.0"
   Id="8bdafaf5-c5f4-4252-b9f5-4466996b0553"
   name="Model" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -2593,7 +2593,7 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="88684ff9-fd41-4ba4-9510-c75b10446377"
+                  Id="48def6f6-deb2-4da9-844a-7804fadee3ca"
                   name="spaceNode"
                   direction="In"
                   isUnique="false">
@@ -2601,6 +2601,20 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
                     <classMoniker
                       Id="9c598c5d-0c3a-4942-839e-cd97c2769d97"
                       LastKnownName="SpaceTreeNode"
+                      LastKnownLocation="Model.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="83c6e5f4-cbeb-4dd0-95ac-80a2ec3b3193"
+                  name="userData"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="9a7feee5-1c55-468a-9551-215eea136823"
+                      LastKnownName="object"
                       LastKnownLocation="Model.uml" />
                   </type_NamedElement>
                 </parameter>
@@ -2914,6 +2928,11 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
       <undefinedType
         Id="3a10e214-675c-4c24-8c36-3efbb8fb5527"
         name="SpaceObject[]" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="9a7feee5-1c55-468a-9551-215eea136823"
+        name="object" />
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType
