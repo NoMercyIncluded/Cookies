@@ -13,6 +13,13 @@ namespace CookiesInTheSpace.XNA
 
     class SpaceTree
     {
+        class QueryData
+        {
+            public Vector2 v1, v2;
+            public List<SpaceObject> results;
+            public Type typeFilter;
+        }
+
         public float Size
         {
             get { return root.Size; }
@@ -227,8 +234,43 @@ namespace CookiesInTheSpace.XNA
 
         public SpaceObject[] queryObjects(Vector2 Position1, Vector2 Position2, Type spaceObjectTypeFilter)
         {
-            //TODO: implement
-            return new SpaceObject[1];
+            if (!typeof(SpaceObject).IsAssignableFrom(spaceObjectTypeFilter))
+            {
+                return new SpaceObject[0];
+            }
+            List<SpaceObject> results = new List<SpaceObject>();
+            
+            QueryData data = new QueryData();
+            data.v1 = Position1;
+            data.v2 = Position2;
+            data.typeFilter = spaceObjectTypeFilter;
+            data.results = results;
+
+            iterateTree(queryObjectsCallback, data);
+
+            return data.results.ToArray();
+        }
+
+        public SpaceTreeIterationCallbackResult queryObjectsCallback(SpaceTreeNode spaceTreeNode, object userData)
+        {
+            QueryData data = (QueryData)userData;
+
+            //Overlapping condition, verify
+            if (data.v1.X < spaceTreeNode.Position.X + spaceTreeNode.Size && data.v1.X > spaceTreeNode.Position.X &&
+                data.v1.Y < spaceTreeNode.Position.Y + spaceTreeNode.Size && data.v2.Y > spaceTreeNode.Position.Y)
+            {
+                return SpaceTreeIterationCallbackResult.CONTINUE_NEXT;
+            }
+
+            //Type condition and adding to result
+            if (spaceTreeNode.spaceObject != null
+                && spaceTreeNode.spaceObject.GetType().IsAssignableFrom(data.typeFilter))
+            {
+                data.results.Add(spaceTreeNode.spaceObject);
+            }
+
+            //Overlapping is somehow present, so just go deeper.
+            return SpaceTreeIterationCallbackResult.CONTINUE_STEP_INTO;
         }
 
         public void updatePositions()

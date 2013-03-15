@@ -9,6 +9,9 @@ namespace CookiesInTheSpace.XNA
 {
     class Space
     {
+        private const double G = 6.67e-11;
+        private const float phi = 0.5F;
+
         SpaceTree STree;
         World PhisicsWorld;
 
@@ -16,15 +19,41 @@ namespace CookiesInTheSpace.XNA
 
         //-----------------------------------------------------------------------
 
-        public SpaceTreeIterationCallbackResult applyGravityForcesCallback(SpaceTreeNode spaceTreeNode) 
+        public SpaceTreeIterationCallbackResult applyGravityForcesCallback(SpaceTreeNode spaceTreeNode, object userData) 
         {
-            //TODO: implement
-            return SpaceTreeIterationCallbackResult.BREAK;
+            SpaceObject spaceObject = (SpaceObject)userData;
+
+            if (spaceTreeNode.spaceObject == spaceObject || spaceTreeNode.Mass == 0)
+                return SpaceTreeIterationCallbackResult.CONTINUE_NEXT;
+
+            double dist = Vector2.Distance(spaceObject.Position, spaceTreeNode.CenterOfMassPosition);
+
+            if (spaceTreeNode.Size / dist < phi || !spaceTreeNode.hasSubnodes())
+            {
+                //If node size is irrellevant in comparison to distance between CenterOffMassPosition and given spaceObject
+                Vector2 vec = spaceTreeNode.CenterOfMassPosition - spaceObject.Position;
+                vec = Vector2.Normalize(vec);
+                vec.X = (float)((spaceObject.Mass * spaceTreeNode.Mass / (dist * dist)) * G) * vec.X;
+                vec.Y = (float)((spaceObject.Mass * spaceTreeNode.Mass / (dist * dist)) * G) * vec.Y;
+
+                spaceObject.PhisicsBody.ApplyForce(vec, spaceObject.Position);
+
+                return SpaceTreeIterationCallbackResult.CONTINUE_NEXT;
+            }
+            else
+            {
+                //If object is too close to CenterOfMassPosition to skip calculations
+                return SpaceTreeIterationCallbackResult.CONTINUE_STEP_INTO;
+            }
+
         }
 
         public void applyGravityForces()
         {
-            //TODO: implement
+            foreach (SpaceObject so in SpaceObjects) 
+            {
+                STree.iterateTree(this.applyGravityForcesCallback, so);
+            }
         }
 
         public SpaceObject createObject(Vector2[] shapePoints, float density, Vector2 position)
