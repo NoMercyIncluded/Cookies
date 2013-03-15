@@ -15,12 +15,34 @@ namespace CookiesInTheSpace.XNA
         SpaceTree STree;
         World PhisicsWorld;
 
-        List<SpaceObject> SpaceObjects = new List<SpaceObject>();
+        float Size 
+        {
+            get { return STree.Size; }
+        }
+        public List<SpaceObject> SpaceObjects = new List<SpaceObject>();
 
         //-----------------------------------------------------------------------
 
+        public Space(float Size) 
+        {
+            PhisicsWorld = new World(new Vector2(0, 0), false);
+            STree = new SpaceTree(Size);
+        }
+
+        public void update(float stepSeconds) 
+        {
+            this.applyGravityForces();
+            PhisicsWorld.Step(stepSeconds, 8, 10);
+
+            foreach (SpaceObject so in SpaceObjects)
+            {
+                STree.updatePosition(so);
+            }
+        }
+
         public SpaceTreeIterationCallbackResult applyGravityForcesCallback(SpaceTreeNode spaceTreeNode, object userData) 
         {
+            //Console.Out.WriteLine(spaceTreeNode.Position.X + "," + spaceTreeNode.Position.Y+ "," + spaceTreeNode.Size);
             SpaceObject spaceObject = (SpaceObject)userData;
 
             if (spaceTreeNode.spaceObject == spaceObject || spaceTreeNode.Mass == 0)

@@ -2170,12 +2170,29 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
           </operation>
           <operation
             Id="c03ef7a0-86a8-4ff7-aab9-37ee26e9f55e"
-            name="updatePositions"
+            name="updatePosition"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"
             concurrency="Sequential"
-            isQuery="false" />
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="b250428e-9feb-4505-b1f2-f4f14e0c55fe"
+                  name="spaceObject"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="62b64ba8-cd33-4f98-a9cc-10511c7827de"
+                      LastKnownName="SpaceObject"
+                      LastKnownLocation="Model.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
         </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
@@ -2908,6 +2925,31 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
                   name="SpaceObject"
                   direction="In"
                   isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="8872051d-2b8e-4b85-9678-6ad1f67381a2"
+            name="Space"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="fff0d931-ae26-4e8b-8ad5-725ef643c782"
+                  name="Size"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="95e06532-1bfa-4ecc-85d0-e94516a54b0a"
+                      LastKnownName="float"
+                      LastKnownLocation="Model.uml" />
+                  </type_NamedElement>
+                </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>

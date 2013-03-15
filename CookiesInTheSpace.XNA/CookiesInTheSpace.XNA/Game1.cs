@@ -20,6 +20,7 @@ namespace CookiesInTheSpace.XNA
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        Space space;
 
         public Game1()
         {
@@ -36,6 +37,12 @@ namespace CookiesInTheSpace.XNA
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            space = new Space(1000);
+            Vector2[] shape = { new Vector2(0, 0), new Vector2(100, 0), new Vector2(100, 100), new Vector2(0, 100) };
+            space.createObject(shape, 12300000, new Vector2(100, 100));
+            space.createObject(shape, 12300000, new Vector2(300, 300));
+            space.createObject(shape, 12300000, new Vector2(100, 300));
+            space.createObject(shape, 12300000, new Vector2(300, 100));
 
             base.Initialize();
         }
@@ -72,6 +79,8 @@ namespace CookiesInTheSpace.XNA
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
+            space.update((float)gameTime.ElapsedGameTime.TotalSeconds);
+
             // TODO: Add your update logic here
 
             base.Update(gameTime);
@@ -85,7 +94,25 @@ namespace CookiesInTheSpace.XNA
         {
             GraphicsDevice.Clear(Color.Black);
 
-            // TODO: Add your drawing code here
+            spriteBatch.Begin();
+            foreach (SpaceObject so in space.SpaceObjects) 
+            {
+                Vector2 op = new Vector2(-1, -1);
+                foreach (Vector2 p in so.ShapeDefinition) 
+                {
+                    if (op.X != -1) 
+                    {
+                        spriteBatch.DrawLine(op + so.Position, p + so.Position, Color.White);
+
+                    }
+
+                    op = p;
+                }
+
+                spriteBatch.DrawLine(op + so.Position, so.ShapeDefinition[0] + so.Position, Color.White);
+
+            }
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }

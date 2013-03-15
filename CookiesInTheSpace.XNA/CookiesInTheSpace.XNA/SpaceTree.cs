@@ -54,7 +54,11 @@ namespace CookiesInTheSpace.XNA
         { 
             //Get proposed node
             SpaceTreeNode node = getNodeByPosition(spaceObject.Position);
-            
+            if (node.hasSubnodes())
+            {
+                node = node.createSubnode(node.getSubnodeIndex(spaceObject.Position));
+            }
+
             //If there is no object just put new one and update Center Of Mass.
             if(node.spaceObject == null)
             {
@@ -63,6 +67,7 @@ namespace CookiesInTheSpace.XNA
             } 
             else 
             {
+                
                 //if there is object store it, and remove temporary from branch
                 SpaceObject oldObject = node.spaceObject;
                 node.spaceObject = null;
@@ -124,6 +129,12 @@ namespace CookiesInTheSpace.XNA
                 } 
                 else 
                 {
+                    if (node == root && !node.hasSubnodes())
+                        break;
+
+                    if (node.subnodes[(int)idx] == null)
+                        break;
+
                     node=node.subnodes[(int)idx];
 
                     if(!node.hasSubnodes())
@@ -160,11 +171,12 @@ namespace CookiesInTheSpace.XNA
                                 //store new node, end loop
                                 node = node.subnodes[i];
                                 found = true;
+                                break;
                                
                             }
                         }
                         if(found)
-                            break;
+                            continue;
                     }
                 }
 
@@ -177,15 +189,16 @@ namespace CookiesInTheSpace.XNA
                         bool found = false;
                         for (int i = (int)node.Parent.getSubnodeIndex(node.Position) + 1; i < 4; i++)
                         {
-                            if (node.subnodes[i] != null)
+                            if (node.Parent.subnodes[i] != null)
                             {
                                 //if found just store new node and break loop.
                                 found = true;
                                 node = node.Parent.subnodes[i];
+                                break;
                             }
                         }
                         if (found)
-                            break;
+                            continue;
                     };
                 }
 
@@ -203,11 +216,12 @@ namespace CookiesInTheSpace.XNA
                         //and find our parents neighbour
                         for (int i = (int)node.Parent.Parent.getSubnodeIndex(node.Parent.Position) + 1; i < 4; i++)
                         {
-                            if (node.subnodes[i] != null)
+                            if (node.Parent.subnodes[i] != null)
                             {
                                 //if found just store and break as usually
                                 found = true;
                                 node = node.Parent.Parent.subnodes[i];
+                                break;
                             }
                         }
                         if (found)
@@ -273,9 +287,16 @@ namespace CookiesInTheSpace.XNA
             return SpaceTreeIterationCallbackResult.CONTINUE_STEP_INTO;
         }
 
-        public void updatePositions()
+        public void updatePosition(SpaceObject spaceObject)
         {
-            //TODO: implement
+            SpaceTreeNode oldNode = this.getNodeByPosition(spaceObject.OldPosition);
+
+            if (oldNode.spaceObject != spaceObject || !oldNode.containsPosition(spaceObject.Position)) 
+            {
+                this.removeObject(spaceObject);
+                this.addObject(spaceObject);
+            }
+            spaceObject.OldPosition = spaceObject.Position;
         }
 
     }

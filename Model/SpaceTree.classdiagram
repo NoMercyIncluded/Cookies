@@ -195,8 +195,18 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
-          <operation Id="013eecc1-7121-4d9f-8e36-1ee82a19db7c" name="updatePositions" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+          <operation Id="013eecc1-7121-4d9f-8e36-1ee82a19db7c" name="updatePosition" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="c03ef7a0-86a8-4ff7-aab9-37ee26e9f55e" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="7a5c1619-8f32-4032-b620-6b34439f963e" name="spaceObject" direction="In" isUnique="false">
+                  <elementDefinition Id="b250428e-9feb-4505-b1f2-f4f14e0c55fe" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="914b4c2d-3acc-49d1-a78f-5bb474b8f177" LastKnownName="SpaceObject" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
           </operation>
         </ownedOperationsInternal>
       </class>
@@ -736,6 +746,19 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
               <operationHasOwnedParameters>
                 <parameter Id="15196616-7ddd-40df-b42e-48c132420a0c" name="SpaceObject" direction="In" isUnique="false">
                   <elementDefinition Id="03e801e6-646a-4cc8-81c3-30b75c486d0d" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="5bd1ffe7-0edd-4849-a88e-5fe2cb095f6c" name="Space" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="8872051d-2b8e-4b85-9678-6ad1f67381a2" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="bd8062af-c57e-4ed1-8e34-5199507d4fb3" name="Size" direction="In" isUnique="false">
+                  <elementDefinition Id="fff0d931-ae26-4e8b-8ad5-725ef643c782" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="cbcfa00f-51db-45fb-ae43-92c844ecfe99" LastKnownName="float" />
+                  </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
