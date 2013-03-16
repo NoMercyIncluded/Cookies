@@ -54,6 +54,8 @@ namespace CookiesInTheSpace.XNA
         { 
             //Get proposed node
             SpaceTreeNode node = getNodeByPosition(spaceObject.Position);
+            if (node == null)
+                return;
             if (node.hasSubnodes())
             {
                 node = node.createSubnode(node.getSubnodeIndex(spaceObject.Position));
@@ -101,10 +103,13 @@ namespace CookiesInTheSpace.XNA
 
         }
 
-        public void removeObject(SpaceObject spaceObject) 
-        { 
-            SpaceTreeNode node = getNodeByPosition(spaceObject.Position);
-
+        public void removeObject(SpaceObject spaceObject, bool oldPosition = false) 
+        {
+            SpaceTreeNode node; 
+                if(oldPosition)
+                    node = getNodeByPosition(spaceObject.OldPosition);
+                else
+                    node = getNodeByPosition(spaceObject.Position);
             //Remove object from node if it is the right one
             if (node.spaceObject == spaceObject)
                 node.spaceObject = null;
@@ -290,10 +295,13 @@ namespace CookiesInTheSpace.XNA
         public void updatePosition(SpaceObject spaceObject)
         {
             SpaceTreeNode oldNode = this.getNodeByPosition(spaceObject.OldPosition);
-
-            if (oldNode.spaceObject != spaceObject || !oldNode.containsPosition(spaceObject.Position)) 
+            if (oldNode == null)
             {
-                this.removeObject(spaceObject);
+                this.addObject(spaceObject);
+            }
+            else if (oldNode.spaceObject != spaceObject || !oldNode.containsPosition(spaceObject.Position))
+            {
+                this.removeObject(spaceObject, true);
                 this.addObject(spaceObject);
             }
             spaceObject.OldPosition = spaceObject.Position;

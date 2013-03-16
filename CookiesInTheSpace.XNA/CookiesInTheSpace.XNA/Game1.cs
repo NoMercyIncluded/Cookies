@@ -26,6 +26,9 @@ namespace CookiesInTheSpace.XNA
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            graphics.PreferredBackBufferHeight = 1000;
+            graphics.PreferredBackBufferWidth = 1000;
+            
         }
 
         /// <summary>
@@ -36,13 +39,18 @@ namespace CookiesInTheSpace.XNA
         /// </summary>
         protected override void Initialize()
         {
+            graphics.PreferredBackBufferHeight = 1000;
+            graphics.PreferredBackBufferWidth = 1000;
+            
             // TODO: Add your initialization logic here
             space = new Space(1000);
             Vector2[] shape = { new Vector2(0, 0), new Vector2(100, 0), new Vector2(100, 100), new Vector2(0, 100) };
-            space.createObject(shape, 12300000, new Vector2(100, 100));
-            space.createObject(shape, 12300000, new Vector2(300, 300));
-            space.createObject(shape, 12300000, new Vector2(100, 300));
-            space.createObject(shape, 12300000, new Vector2(300, 100));
+            space.createObject(shape, 12300000000, new Vector2(100, 100));
+            space.createObject(shape, 12300000000, new Vector2(300, 300));
+            space.createObject(shape, 123, new Vector2(100, 300));
+            space.createObject(shape, 12300000000, new Vector2(300, 100));
+
+            
 
             base.Initialize();
         }
@@ -86,6 +94,12 @@ namespace CookiesInTheSpace.XNA
             base.Update(gameTime);
         }
 
+        private SpaceTreeIterationCallbackResult drawNodesCallback(SpaceTreeNode node, object userData) 
+        {
+            spriteBatch.DrawRectangle(node.Position, new Vector2(node.Size, node.Size), Color.Gray, 2);
+            return SpaceTreeIterationCallbackResult.CONTINUE_STEP_INTO;
+        }
+
         /// <summary>
         /// This is called when the game should draw itself.
         /// </summary>
@@ -97,20 +111,25 @@ namespace CookiesInTheSpace.XNA
             spriteBatch.Begin();
             foreach (SpaceObject so in space.SpaceObjects) 
             {
-                Vector2 op = new Vector2(-1, -1);
-                foreach (Vector2 p in so.ShapeDefinition) 
-                {
-                    if (op.X != -1) 
-                    {
-                        spriteBatch.DrawLine(op + so.Position, p + so.Position, Color.White);
 
-                    }
+                //Vector2 op = new Vector2(-1, -1);
+                //foreach (Vector2 p in so.ShapeDefinition) 
+                //{
+                //    if (op.X != -1) 
+                //    {
+                //        spriteBatch.DrawLine(op + so.Position, p + so.Position, Color.White);
 
-                    op = p;
-                }
+                //    }
 
-                spriteBatch.DrawLine(op + so.Position, so.ShapeDefinition[0] + so.Position, Color.White);
+                //    op = p;
+                //}
+                
+                //spriteBatch.DrawLine(op + so.Position, so.ShapeDefinition[0] + so.Position, Color.White);
 
+                space.STree.iterateTree(drawNodesCallback, null);
+
+                Vector2 v = so.Position - new Vector2(5, 5);
+                spriteBatch.DrawRectangle(v, new Vector2(10, 10), Color.Wheat);
             }
             spriteBatch.End();
 

@@ -12,7 +12,7 @@ namespace CookiesInTheSpace.XNA
         private const double G = 6.67e-11;
         private const float phi = 0.5F;
 
-        SpaceTree STree;
+        public SpaceTree STree;
         World PhisicsWorld;
 
         float Size 
