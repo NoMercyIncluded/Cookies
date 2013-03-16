@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Box2D.XNA;
 using Microsoft.Xna.Framework;
+using System.Reflection;
 
 namespace CookiesInTheSpace.XNA
 {
@@ -89,15 +90,16 @@ namespace CookiesInTheSpace.XNA
                 return null;
             }
 
-            var shape = new PolygonShape();
-
-            shape.Set(shapePoints, shapePoints.Length);
-
+            var p = new Object[] { shapePoints };
+            Shape shape = (Shape)spaceObjectType.GetMethods(BindingFlags.Public | BindingFlags.Static)
+                .Single(m => m.Name == "createShape")
+                .Invoke(null, p);
+            
             var fd = new FixtureDef();
 
             fd.shape = shape;
 
-            fd.restitution = 0f;
+            fd.restitution = 0.5f;
 
             fd.friction = 1f;
 

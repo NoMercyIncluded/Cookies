@@ -44,11 +44,11 @@ namespace CookiesInTheSpace.XNA
             
             // TODO: Add your initialization logic here
             space = new Space(1000);
-            Vector2[] shape = { new Vector2(0, 0), new Vector2(100, 0), new Vector2(100, 100), new Vector2(0, 100) };
-            space.createObject(shape, 12300000000, new Vector2(100, 100));
-            space.createObject(shape, 12300000000, new Vector2(300, 300));
-            space.createObject(shape, 123, new Vector2(100, 300));
-            space.createObject(shape, 12300000000, new Vector2(300, 100));
+            Vector2[] shape = { new Vector2(50, 0) };
+            space.createObject(shape, 123000000000, new Vector2(400, 400), typeof(Planet));
+            space.createObject(shape, 123000000000, new Vector2(700, 700), typeof(Planet));
+            space.createObject(shape, 123, new Vector2(400, 700), typeof(Planet));
+            space.createObject(shape, 123000000000, new Vector2(700, 400), typeof(Planet));
 
             
 
@@ -107,29 +107,37 @@ namespace CookiesInTheSpace.XNA
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
-
             spriteBatch.Begin();
-            foreach (SpaceObject so in space.SpaceObjects) 
+            space.STree.iterateTree(drawNodesCallback, null);
+
+
+            foreach (SpaceObject so in space.STree.queryObjects(new Vector2(0,0), new Vector2(1000, 1000))) 
             {
 
-                //Vector2 op = new Vector2(-1, -1);
-                //foreach (Vector2 p in so.ShapeDefinition) 
-                //{
-                //    if (op.X != -1) 
-                //    {
-                //        spriteBatch.DrawLine(op + so.Position, p + so.Position, Color.White);
+                if (so is Planet)
+                {
+                    spriteBatch.FillRectangle(new Rectangle((int)so.Position.X - 2, (int)so.Position.Y - 2, 4, 4), Color.AliceBlue);
+                    spriteBatch.DrawCircle(so.Position, so.ShapeDefinition[0].X, 100, Color.AliceBlue);
+                }
+                else
+                {
+                    Vector2 op = new Vector2(-1, -1);
+                    foreach (Vector2 p in so.ShapeDefinition)
+                    {
+                        if (op.X != -1)
+                        {
+                            spriteBatch.DrawLine(op + so.Position, p + so.Position, Color.White);
 
-                //    }
+                        }
 
-                //    op = p;
-                //}
+                        op = p;
+                    }
+
+                    spriteBatch.DrawLine(op + so.Position, so.ShapeDefinition[0] + so.Position, Color.White);
+                }
                 
-                //spriteBatch.DrawLine(op + so.Position, so.ShapeDefinition[0] + so.Position, Color.White);
-
-                space.STree.iterateTree(drawNodesCallback, null);
-
-                Vector2 v = so.Position - new Vector2(5, 5);
-                spriteBatch.DrawRectangle(v, new Vector2(10, 10), Color.Wheat);
+                //Vector2 v = so.Position - new Vector2(5, 5);
+                //spriteBatch.FillRectangle(v, new Vector2(10, 10), Color.Wheat);
             }
             spriteBatch.End();
 

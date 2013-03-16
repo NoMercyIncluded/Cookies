@@ -43,5 +43,15 @@ namespace CookiesInTheSpace.XNA
             this.PhisicsBody = PhisicsBody;
             this._shapeDefinition = ShapeDefinition;
         }
+
+        
+        public static Shape createShape(Vector2[] shapePoints)
+        {
+
+            var shape = new PolygonShape();
+            shape.Set(shapePoints, shapePoints.Length);
+
+            return shape;
+        }
     }
 }

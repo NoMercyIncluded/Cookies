@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 
 namespace CookiesInTheSpace.XNA
 {
@@ -73,7 +74,7 @@ namespace CookiesInTheSpace.XNA
                 //if there is object store it, and remove temporary from branch
                 SpaceObject oldObject = node.spaceObject;
                 node.spaceObject = null;
-                removeMassFromBranch(node, spaceObject.Mass, spaceObject.Position);
+                removeMassFromBranch(node, oldObject.Mass, oldObject.OldPosition);
 
                 //Now we have 2 objects to put into subtree.
                 SubnodeIndex s1;
@@ -84,7 +85,7 @@ namespace CookiesInTheSpace.XNA
                 do
                 {
                     s1 = currentNode.getSubnodeIndex(spaceObject.Position);
-                    s2 = currentNode.getSubnodeIndex(oldObject.Position);
+                    s2 = currentNode.getSubnodeIndex(oldObject.OldPosition);
 
                     currentNode = currentNode.createSubnode(s1);
                 } while (s1 == s2);
@@ -98,22 +99,24 @@ namespace CookiesInTheSpace.XNA
                 currentNode.subnodes[(int)s1].spaceObject = spaceObject;
                 currentNode.subnodes[(int)s2].spaceObject = oldObject;
                 addMassToBranch(currentNode.subnodes[(int)s1], spaceObject.Mass, spaceObject.Position);
-                addMassToBranch(currentNode.subnodes[(int)s2], oldObject.Mass, oldObject.Position);
+                addMassToBranch(currentNode.subnodes[(int)s2], oldObject.Mass, oldObject.OldPosition);
             }
 
         }
 
         public void removeObject(SpaceObject spaceObject, bool oldPosition = false) 
         {
-            SpaceTreeNode node; 
-                if(oldPosition)
-                    node = getNodeByPosition(spaceObject.OldPosition);
-                else
-                    node = getNodeByPosition(spaceObject.Position);
+            Vector2 pos;
+            if (oldPosition)
+                pos = spaceObject.OldPosition;
+            else
+                pos = spaceObject.Position;
+            SpaceTreeNode node = getNodeByPosition(pos);
             //Remove object from node if it is the right one
             if (node.spaceObject == spaceObject)
                 node.spaceObject = null;
 
+            removeMassFromBranch(node, spaceObject.Mass, pos);
             //Go up deleting nodes behind (except root node)
             while (node.isEmpty() && node != root) 
             {
@@ -221,7 +224,7 @@ namespace CookiesInTheSpace.XNA
                         //and find our parents neighbour
                         for (int i = (int)node.Parent.Parent.getSubnodeIndex(node.Parent.Position) + 1; i < 4; i++)
                         {
-                            if (node.Parent.subnodes[i] != null)
+                            if (node.Parent.Parent.subnodes[i] != null)
                             {
                                 //if found just store and break as usually
                                 found = true;
@@ -270,22 +273,30 @@ namespace CookiesInTheSpace.XNA
             return data.results.ToArray();
         }
 
-        public SpaceTreeIterationCallbackResult queryObjectsCallback(SpaceTreeNode spaceTreeNode, object userData)
+        public SpaceTreeIterationCallbackResult queryObjectsCallback(SpaceTreeNode node, object userData)
         {
             QueryData data = (QueryData)userData;
-
+            
             //Overlapping condition, verify
-            if (data.v1.X < spaceTreeNode.Position.X + spaceTreeNode.Size && data.v1.X > spaceTreeNode.Position.X &&
-                data.v1.Y < spaceTreeNode.Position.Y + spaceTreeNode.Size && data.v2.Y > spaceTreeNode.Position.Y)
+            if (
+                (data.v1.X < node.Position.X && data.v2.X < node.Position.X) ||
+                (data.v1.X > node.Position.X + node.Size && data.v2.X > node.Position.X + node.Size) ||
+                (data.v1.Y < node.Position.Y && data.v2.Y < node.Position.Y) ||
+                (data.v1.Y > node.Position.Y + node.Size && data.v2.Y > node.Position.Y + node.Size)
+                )
             {
                 return SpaceTreeIterationCallbackResult.CONTINUE_NEXT;
             }
 
             //Type condition and adding to result
-            if (spaceTreeNode.spaceObject != null
-                && spaceTreeNode.spaceObject.GetType().IsAssignableFrom(data.typeFilter))
+            if (node.spaceObject != null
+                && data.typeFilter.IsAssignableFrom(node.spaceObject.GetType())
+                && node.spaceObject.Position.X >= data.v1.X && node.spaceObject.Position.X <= data.v2.X
+                && node.spaceObject.Position.Y >= data.v1.Y && node.spaceObject.Position.Y <= data.v2.Y
+                )
             {
-                data.results.Add(spaceTreeNode.spaceObject);
+                data.results.Add(node.spaceObject);
+                return SpaceTreeIterationCallbackResult.CONTINUE_NEXT;
             }
 
             //Overlapping is somehow present, so just go deeper.
@@ -301,8 +312,18 @@ namespace CookiesInTheSpace.XNA
             }
             else if (oldNode.spaceObject != spaceObject || !oldNode.containsPosition(spaceObject.Position))
             {
+                if (oldNode.spaceObject != spaceObject)
+                {
+                    int i = 0;
+                    i++;
+                }
                 this.removeObject(spaceObject, true);
                 this.addObject(spaceObject);
+            }
+            else 
+            {
+                this.removeMassFromBranch(oldNode, spaceObject.Mass, spaceObject.OldPosition);
+                this.addMassToBranch(oldNode, spaceObject.Mass, spaceObject.Position);
             }
             spaceObject.OldPosition = spaceObject.Position;
         }
