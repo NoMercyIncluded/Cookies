@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="b08e3ca0-8846-4b09-aa67-3eedbab2831f" name="View" linkedPackageId="9687c48c-e792-4ac8-89de-8250e9f48fdb" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="7ee348fb-1dd3-4654-98cd-42109fe542c7">
+      <profileInstance Id="d902b503-a9ac-4827-b5bf-b49b68f600e2" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="8b9eb706-bfc1-46ef-a304-8fb1fa2f0b0f">
+      <profileInstance Id="fa465610-aa5e-41f8-93b7-fa135db6c017" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="7df8c315-10ea-42e0-a8dc-4e12b916f867" name="Camera" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="90c7469f-eb53-4a69-836e-165ff766cf67" />
+        <ownedAttributesInternal>
+          <property Id="e2c34b5a-dc63-42d6-a064-266ae750f357" name="UnitsPerPixel" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="5fbd55bb-771e-4a4d-afee-54a2545ba029" />
+          </property>
+          <property Id="3b4527de-3b99-4dc4-992e-b978fb17195d" name="PixelsPerUnit" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="a3034b3d-e075-468b-8581-d656dde0dd60" />
+          </property>
+          <property Id="7ceccaf7-da62-4d59-ad6c-dfe6c4a78dba" name="Position" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="c660df6a-de23-4508-98df-968c982f2209" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="9687c48c-e792-4ac8-89de-8250e9f48fdb" name="Model">
+    <elementDefinition Id="8bdafaf5-c5f4-4252-b9f5-4466996b0553" />
+  </package>
+</logicalClassDesignerModel>

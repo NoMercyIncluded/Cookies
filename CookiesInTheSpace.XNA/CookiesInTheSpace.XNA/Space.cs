@@ -10,7 +10,7 @@ namespace CookiesInTheSpace.XNA
 {
     class Space
     {
-        private const double G = 6.67e-11;
+        public const double G = 6.67e-11;
         private const float phi = 0.5F;
 
         public SpaceTree STree;
@@ -137,6 +137,5 @@ namespace CookiesInTheSpace.XNA
 
             spaceObject.PhisicsBody = null;
         }
-
     }
 }

@@ -37,6 +37,12 @@ namespace CookiesInTheSpace.XNA
             set { PhisicsBody.Rotation = value; }
         }
 
+        public Vector2 Velocity
+        {
+            get { return PhisicsBody.GetLinearVelocity(); }
+            set { PhisicsBody.SetLinearVelocity(value); }
+        }
+
         //------------------------------------------------------------------
 
         public SpaceObject(Body PhisicsBody, Vector2[] ShapeDefinition) {

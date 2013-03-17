@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
   dslVersion="1.0.0.0"
   Id="8bdafaf5-c5f4-4252-b9f5-4466996b0553"
   name="Model" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -2975,6 +2975,244 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
       <undefinedType
         Id="9a7feee5-1c55-468a-9551-215eea136823"
         name="object" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="90c7469f-eb53-4a69-836e-165ff766cf67"
+        name="Camera"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedAttributesInternal>
+          <property
+            Id="5fbd55bb-771e-4a4d-afee-54a2545ba029"
+            name="UnitsPerPixel"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="a3034b3d-e075-468b-8581-d656dde0dd60"
+            name="PixelsPerUnit"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="c660df6a-de23-4508-98df-968c982f2209"
+            name="Position"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+        </ownedAttributesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="208b0044-2458-44e4-aac8-59debead2951"
+        name="SpaceGen"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedOperationsInternal>
+          <operation
+            Id="147fd913-b4b8-4505-8f82-cf40307a2a52"
+            name="generate"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="516b0146-6414-4d68-9ea6-1e7c2734eb54"
+                  name="size"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="95e06532-1bfa-4ecc-85d0-e94516a54b0a"
+                      LastKnownName="float"
+                      LastKnownLocation="Model.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="5b79d2ff-0cfa-4d9d-a27c-9955e738dce1"
+                  name="massFoactor"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="95e06532-1bfa-4ecc-85d0-e94516a54b0a"
+                      LastKnownName="float"
+                      LastKnownLocation="Model.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="31000a56-7298-4f5f-a97f-b4811ea52fdd"
+                  name="maxNumberOfObjects"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="5b250d8e-e1a7-4e11-be83-ff68dfa6a407"
+                      LastKnownName="int"
+                      LastKnownLocation="Model.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="d538046e-bc09-48c2-bef0-b73fd02c7edd"
+                  name="maxDepthLevel"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="5b250d8e-e1a7-4e11-be83-ff68dfa6a407"
+                      LastKnownName="int"
+                      LastKnownLocation="Model.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="c58f9161-1b79-49f4-b90d-2abdb006ce8b"
+                  name="minSolarDensity"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="95e06532-1bfa-4ecc-85d0-e94516a54b0a"
+                      LastKnownName="float"
+                      LastKnownLocation="Model.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="7a1b69e2-61f1-4914-85d6-c16540b8cbef"
+                  name="maxSolarDensity"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="95e06532-1bfa-4ecc-85d0-e94516a54b0a"
+                      LastKnownName="float"
+                      LastKnownLocation="Model.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="94dc3ec2-531e-4376-ae5d-55f4f40c8d66"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="aa6e5bdc-ad62-49df-aee8-f8ed85726544"
+                      LastKnownName="Space"
+                      LastKnownLocation="Model.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="d2b031ff-eda9-453a-9587-afa0d50182d2"
+                  name="minSolarRadius"
+                  direction="In">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="95e06532-1bfa-4ecc-85d0-e94516a54b0a"
+                      LastKnownName="float"
+                      LastKnownLocation="Model.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="a9f11529-5dfb-4eeb-b993-f3eb4239ba95"
+                  name="maxSolarRadius"
+                  direction="In">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="95e06532-1bfa-4ecc-85d0-e94516a54b0a"
+                      LastKnownName="float"
+                      LastKnownLocation="Model.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="c40ccf2a-9750-41a2-82ac-ec1155646dc6"
+                  name="radiusScalePerLevel"
+                  direction="In">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="95e06532-1bfa-4ecc-85d0-e94516a54b0a"
+                      LastKnownName="float"
+                      LastKnownLocation="Model.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="a4df2952-bb8a-4b14-b322-2d2466b862ad"
+                  name="orbitRadiusPerMass"
+                  direction="In">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="95e06532-1bfa-4ecc-85d0-e94516a54b0a"
+                      LastKnownName="float"
+                      LastKnownLocation="Model.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="652cb973-7f1c-45b4-aa4d-b153db37458e"
+                  name="maxNumberOfSatelites"
+                  direction="In">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="5b250d8e-e1a7-4e11-be83-ff68dfa6a407"
+                      LastKnownName="int"
+                      LastKnownLocation="Model.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="756f6d0e-90dc-4ac2-8e64-62d2b0633a17"
+        name="dlaot" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="1d9d60f8-60d1-4c5d-885f-91d486ba763c"
+        name="flaot" />
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType

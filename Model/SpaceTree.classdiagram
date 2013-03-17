@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="b851377e-f5d8-459a-9303-22a5b3492a4d" name="SpaceTree" linkedPackageId="272f2d07-ae8b-4544-a7cd-3d4c713c26a6" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="b851377e-f5d8-459a-9303-22a5b3492a4d" name="SpaceTree" linkedPackageId="272f2d07-ae8b-4544-a7cd-3d4c713c26a6" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
   <ownedCommentsInternal>
     <comment Id="2b936cbc-e108-4a5a-98ea-e6d8f57d98d8">
       <elementDefinition Id="48d67b2b-0b1b-4198-9ce4-6dcf05ab2912" />
@@ -794,6 +794,119 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
     <packageHasNamedElement>
       <referencedType Id="afad7452-3fb3-4cd9-b0e6-5faac4918ec4" name="object" isAbstract="false" isLeaf="false" cachedFullName="object">
         <elementDefinition Id="9a7feee5-1c55-468a-9551-215eea136823" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="01aad0e9-d8b2-4409-a426-d972d60ea3e9" name="SpaceGen" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="208b0044-2458-44e4-aac8-59debead2951" />
+        <ownedOperationsInternal>
+          <operation Id="780c9306-631a-4170-8763-06a7ab8da300" name="generate" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="147fd913-b4b8-4505-8f82-cf40307a2a52" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="ff049840-74e8-4885-8288-ae7dbdc55c8e" name="size" direction="In" isUnique="false">
+                  <elementDefinition Id="516b0146-6414-4d68-9ea6-1e7c2734eb54" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="cbcfa00f-51db-45fb-ae43-92c844ecfe99" LastKnownName="float" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="a6e16d73-e86f-4657-ae63-43c96ecf3924" name="massFoactor" direction="In" isUnique="false">
+                  <elementDefinition Id="5b79d2ff-0cfa-4d9d-a27c-9955e738dce1" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="cbcfa00f-51db-45fb-ae43-92c844ecfe99" LastKnownName="float" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="848d107b-a4f0-4600-be16-23cd427858b2" name="maxNumberOfObjects" direction="In" isUnique="false">
+                  <elementDefinition Id="31000a56-7298-4f5f-a97f-b4811ea52fdd" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="1bbdf273-7ccd-470f-9802-8510880e7d2d" LastKnownName="int" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="1a14bfa0-b6b5-45dd-baf4-c46ed47e7a99" name="maxDepthLevel" direction="In" isUnique="false">
+                  <elementDefinition Id="d538046e-bc09-48c2-bef0-b73fd02c7edd" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="1bbdf273-7ccd-470f-9802-8510880e7d2d" LastKnownName="int" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="495e0783-2638-4cef-b2dd-74dbfb0ef0f5" name="minSolarDensity" direction="In" isUnique="false">
+                  <elementDefinition Id="c58f9161-1b79-49f4-b90d-2abdb006ce8b" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="cbcfa00f-51db-45fb-ae43-92c844ecfe99" LastKnownName="float" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="5368195a-a192-451b-bdfa-a416fb63a115" name="maxSolarDensity" direction="In" isUnique="false">
+                  <elementDefinition Id="7a1b69e2-61f1-4914-85d6-c16540b8cbef" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="cbcfa00f-51db-45fb-ae43-92c844ecfe99" LastKnownName="float" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="64aa5b4c-4b71-45ce-b0eb-e4ce75fde4b1" direction="Return" isUnique="false">
+                  <elementDefinition Id="94dc3ec2-531e-4376-ae5d-55f4f40c8d66" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="a7609e33-bc91-4180-8703-b2932ebce7a4" LastKnownName="Space" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="e69dd9e2-2371-47fe-957f-d4cf7d3ffa6c" name="minSolarRadius" direction="In">
+                  <elementDefinition Id="d2b031ff-eda9-453a-9587-afa0d50182d2" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="cbcfa00f-51db-45fb-ae43-92c844ecfe99" LastKnownName="float" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="9e8f59aa-20c1-4a78-a281-9efe1064bf2d" name="maxSolarRadius" direction="In">
+                  <elementDefinition Id="a9f11529-5dfb-4eeb-b993-f3eb4239ba95" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="cbcfa00f-51db-45fb-ae43-92c844ecfe99" LastKnownName="float" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="a11be43d-0c40-4712-b6cd-9e056cf40a70" name="radiusScalePerLevel" direction="In">
+                  <elementDefinition Id="c40ccf2a-9750-41a2-82ac-ec1155646dc6" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="cbcfa00f-51db-45fb-ae43-92c844ecfe99" LastKnownName="float" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="6419dadf-497c-46ba-9361-e989f0ef3ff2" name="orbitRadiusPerMass" direction="In">
+                  <elementDefinition Id="a4df2952-bb8a-4b14-b322-2d2466b862ad" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="cbcfa00f-51db-45fb-ae43-92c844ecfe99" LastKnownName="float" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="c68fe2a2-9242-4fef-9d89-fb8bd795aa47" name="maxNumberOfSatelites" direction="In">
+                  <elementDefinition Id="652cb973-7f1c-45b4-aa4d-b153db37458e" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="1bbdf273-7ccd-470f-9802-8510880e7d2d" LastKnownName="int" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="1bbdf273-7ccd-470f-9802-8510880e7d2d" name="int" isAbstract="false" isLeaf="false" cachedFullName="int">
+        <elementDefinition Id="5b250d8e-e1a7-4e11-be83-ff68dfa6a407" />
       </referencedType>
     </packageHasNamedElement>
   </packagedElements>

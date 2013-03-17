@@ -9,6 +9,9 @@ namespace CookiesInTheSpace.XNA
 {
     class Planet : SpaceObject
     {
+        public float orbitRadius;
+        public float linearVelocity;
+        
         public Planet(Body PhisicsBody, Vector2[] ShapeDefinition):base(PhisicsBody, ShapeDefinition) 
         {}
 
