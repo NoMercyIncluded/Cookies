@@ -3016,8 +3016,272 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
-            isComposite="false" />
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="70a8cad3-b553-4407-b422-1718e0e9fc09"
+                LastKnownName="Vector2"
+                LastKnownLocation="Model.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="a5f0d6bd-bb07-4f12-96bb-2bc7e3535b7e"
+            name="LockedOnObject"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <classMoniker
+                Id="62b64ba8-cd33-4f98-a9cc-10511c7827de"
+                LastKnownName="SpaceObject"
+                LastKnownLocation="Model.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="5b7b0b33-c7e6-4350-971d-cc0fceaa3a8f"
+            name="OldPosition"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="70a8cad3-b553-4407-b422-1718e0e9fc09"
+                LastKnownName="Vector2"
+                LastKnownLocation="Model.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="29230bb6-6d88-4aff-8fdc-9b39a55cab3f"
+            name="ViewFrameSize"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="70a8cad3-b553-4407-b422-1718e0e9fc09"
+                LastKnownName="Vector2"
+                LastKnownLocation="Model.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="52e69231-7145-4dce-bdd2-8e6e5901011d"
+            name="PositionShift"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="70a8cad3-b553-4407-b422-1718e0e9fc09"
+                LastKnownName="Vector2"
+                LastKnownLocation="Model.uml" />
+            </type_NamedElement>
+          </property>
         </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="fb8b116b-0abd-4ea1-b775-7ac91458d0a9"
+            name="FreeLock"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="25a9321a-8c6c-483a-b763-7eb3e792a703"
+            name="Update"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="47177426-b4bb-469d-90b4-e7261d0be6c9"
+            name="Update"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="9c312d9e-1690-4db3-bac5-7a832419da76"
+                  name="x"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="95e06532-1bfa-4ecc-85d0-e94516a54b0a"
+                      LastKnownName="float"
+                      LastKnownLocation="Model.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="78a052c2-5b40-4c4e-b1f7-246d54637412"
+                  name="y"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="95e06532-1bfa-4ecc-85d0-e94516a54b0a"
+                      LastKnownName="float"
+                      LastKnownLocation="Model.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="71ec24c9-b9c5-4a5f-9efa-ecb348c92a80"
+            name="Update"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="a6097502-0210-4b2d-8d03-05e81ab39c56"
+                  name="lockOnThis"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="62b64ba8-cd33-4f98-a9cc-10511c7827de"
+                      LastKnownName="SpaceObject"
+                      LastKnownLocation="Model.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="28c739a3-9435-4c61-9e06-3cfa8c4cb411"
+            name="Zoom"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="416b066d-3225-4a8e-88c8-acb7d354120c"
+                  name="multiplier"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="5b250d8e-e1a7-4e11-be83-ff68dfa6a407"
+                      LastKnownName="int"
+                      LastKnownLocation="Model.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="9b4e50f6-ec5e-47f2-80bc-06630d39afdf"
+            name="Camera"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="12ae4161-2ca8-45fa-bc1c-c89e25c1fd22"
+                  name="viewFrameSizeX"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="5b250d8e-e1a7-4e11-be83-ff68dfa6a407"
+                      LastKnownName="int"
+                      LastKnownLocation="Model.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="31805d7e-2bde-43de-a987-1258848b5c4f"
+                  name="viewFrameSizeY"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="5b250d8e-e1a7-4e11-be83-ff68dfa6a407"
+                      LastKnownName="int"
+                      LastKnownLocation="Model.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="6db3ee80-a3fc-43e1-af50-bfe3eec410f9"
+            name="ShiftPosition"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="5886e339-63d4-4b3d-9110-e477b1d5afcd"
+                  name="x"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="95e06532-1bfa-4ecc-85d0-e94516a54b0a"
+                      LastKnownName="float"
+                      LastKnownLocation="Model.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="aeb02fe6-efbb-4fa6-a498-6b177b3f17d6"
+                  name="y"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="95e06532-1bfa-4ecc-85d0-e94516a54b0a"
+                      LastKnownName="float"
+                      LastKnownLocation="Model.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -3213,6 +3477,11 @@ http://msdn.microsoft.com/en-us/library/aa288459(v=vs.71).aspx</body>
       <undefinedType
         Id="1d9d60f8-60d1-4c5d-885f-91d486ba763c"
         name="flaot" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="08461cfe-bb3c-484b-9ed6-157ad942e51e"
+        name="boolean" />
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType

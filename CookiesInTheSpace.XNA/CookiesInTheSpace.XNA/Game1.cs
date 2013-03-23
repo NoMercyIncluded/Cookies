@@ -22,6 +22,8 @@ namespace CookiesInTheSpace.XNA
         SpriteBatch spriteBatch;
         Space space;
         Camera camera;
+        float spaceSize;
+        int universalCounter = 0;
 
         Texture2D myTexture;
 
@@ -65,46 +67,49 @@ namespace CookiesInTheSpace.XNA
             float sunRadius = 109 * earthRadius;
             float sunDensity = 1.408e6f * 100 * massFactor;
 
+            spaceSize = 16777216;
+            float centerPos = spaceSize / 2;
+
+            space = new Space(spaceSize);
+
             SpaceObject sun;
             SpaceObject earth;
             SpaceObject moon;
             SpaceObject venus;
             SpaceObject jupiter;
             
-            graphics.PreferredBackBufferHeight = 1000;
-            graphics.PreferredBackBufferWidth = 1000;
-            camera = new Camera()
-            {
-                Position = new Vector2(0, 0),
-                UnitsPerPixel = 4
-            };
-            space = new Space(524288);
-
-
             //Vector2[] shape = { new Vector2(50, 0) };
             //space.createObject(shape, 123000000000, new Vector2(400, 400), typeof(Planet));
             //space.createObject(shape, 123000000000, new Vector2(700, 700), typeof(Planet));
             //space.createObject(shape, 123, new Vector2(400, 700), typeof(Planet));
             //space.createObject(shape, 123000000000, new Vector2(700, 400), typeof(Planet));
 
-            sun = space.createObject( new Vector2[] { new Vector2(sunRadius, 0) }, sunDensity, new Vector2(200000, 200000), typeof(Planet));
+            sun = space.createObject(new Vector2[] { new Vector2(sunRadius, 0) }, sunDensity, new Vector2(centerPos, centerPos), typeof(Planet));
             
             float earthVel = -(float)Math.Sqrt(Space.G * sun.Mass / earthOrbitRadius);
-            earth = space.createObject(new Vector2[] { new Vector2(earthRadius, 0) }, earthDensity, new Vector2(200000 - earthOrbitRadius, 200000), typeof(Planet));
+            earth = space.createObject(new Vector2[] { new Vector2(earthRadius, 0) }, earthDensity, new Vector2(centerPos - earthOrbitRadius, centerPos), typeof(Planet));
             earth.Velocity = new Vector2(0, earthVel);
             
 
             float venusVel = -(float)Math.Sqrt(Space.G * sun.Mass / venusOrbitRadius);
-            venus = space.createObject(new Vector2[] { new Vector2(venusRadius, 0) }, venusDensity, new Vector2(200000 - venusOrbitRadius, 200000), typeof(Planet));
+            venus = space.createObject(new Vector2[] { new Vector2(venusRadius, 0) }, venusDensity, new Vector2(centerPos - venusOrbitRadius, centerPos), typeof(Planet));
             venus.Velocity = new Vector2(0, venusVel);
             
 
             float jupiterVel = -(float)Math.Sqrt(Space.G * sun.Mass / jupiterOrbitRadius);
-            jupiter = space.createObject(new Vector2[] { new Vector2(jupiterRadius, 0) }, jupiterDensity, new Vector2(200000 - jupiterOrbitRadius, 200000), typeof(Planet));
+            jupiter = space.createObject(new Vector2[] { new Vector2(jupiterRadius, 0) }, jupiterDensity, new Vector2(centerPos - jupiterOrbitRadius, centerPos), typeof(Planet));
             jupiter.Velocity = new Vector2(0, jupiterVel);
 
-            moon = space.createObject(new Vector2[] { new Vector2(moonRadius, 0) }, moonDensity, new Vector2(200000 - earthOrbitRadius - moonOrbitRadius, 200000), typeof(Planet));
+            moon = space.createObject(new Vector2[] { new Vector2(moonRadius, 0) }, moonDensity, new Vector2(centerPos - earthOrbitRadius - moonOrbitRadius, centerPos), typeof(Planet));
             moon.Velocity = new Vector2(0, earthVel - (float)Math.Sqrt(Space.G * earth.Mass / moonOrbitRadius));
+
+            graphics.PreferredBackBufferHeight = 1000;
+            graphics.PreferredBackBufferWidth = 1000;
+            camera = new Camera(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight)
+            {
+                OldPosition = new Vector2(centerPos, centerPos),
+                UnitsPerPixel = spaceSize / (float)graphics.PreferredBackBufferHeight
+            };
 
             base.Initialize();
         }
@@ -144,38 +149,51 @@ namespace CookiesInTheSpace.XNA
 
             if (Keyboard.GetState().IsKeyDown(Keys.Subtract))
             {
-                camera.Position.X -= (float)(0.03 * camera.UnitsPerPixel * 1000 / 2);
-                camera.Position.Y -= (float)(0.03 * camera.UnitsPerPixel * 1000 / 2);
-                camera.UnitsPerPixel *= 1.03f;
+                if (camera.UnitsPerPixel < this.spaceSize / this.graphics.PreferredBackBufferHeight)
+                    camera.Zoom(-1);
             }
             else if (Keyboard.GetState().IsKeyDown(Keys.Add))
             {
-                camera.Position.X += (float)(0.03f * camera.UnitsPerPixel * 1000 / 2);
-                camera.Position.Y += (float)(0.03f * camera.UnitsPerPixel * 1000 / 2);
-
-                camera.UnitsPerPixel *= 0.97f;
+                camera.Zoom(1);
             }
 
             if (Keyboard.GetState().IsKeyDown(Keys.Up))
             {
-                camera.Position.Y -= camera.UnitsPerPixel * 3;
+                camera.Update(0, -10);
             }
             else if (Keyboard.GetState().IsKeyDown(Keys.Down))
             {
-                camera.Position.Y += camera.UnitsPerPixel * 3;
+                camera.Update(0, 10);
             }
 
             if (Keyboard.GetState().IsKeyDown(Keys.Left))
             {
-                camera.Position.X -= camera.UnitsPerPixel * 3;
+                camera.Update(-10, 0);
             }
             else if (Keyboard.GetState().IsKeyDown(Keys.Right))
             {
-                camera.Position.X += camera.UnitsPerPixel * 3;
+                camera.Update(10, 0);
+            }
+
+
+            if (Keyboard.GetState().IsKeyDown(Keys.D1))
+            {
+                if (universalCounter > 0) universalCounter -= 1;
+                camera.Update(space.SpaceObjects[universalCounter/5]);
+            }
+            else if (Keyboard.GetState().IsKeyDown(Keys.D2))
+            {
+                if(universalCounter < space.SpaceObjects.Count*5-1) universalCounter += 1;
+                camera.Update(space.SpaceObjects[universalCounter/5]);
+            }
+            else if (Keyboard.GetState().IsKeyDown(Keys.D3))
+            {
+                camera.FreeLock();
             }
 
             space.update((float)gameTime.ElapsedGameTime.TotalSeconds);
-
+            camera.Update();
+            Window.Title = "Camera position: ( " + (camera.Position.X) + " , " + (camera.Position.Y) + " )";
             // TODO: Add your update logic here
 
             GC.Collect();
