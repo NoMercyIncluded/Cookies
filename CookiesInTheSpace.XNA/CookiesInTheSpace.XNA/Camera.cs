@@ -86,7 +86,7 @@ namespace CookiesInTheSpace.XNA
 
         public void Zoom(int multiplier)
         {
-            if (multiplier > 0 && UnitsPerPixel > 1)
+            if (multiplier > 0)
             {
                 Position.X += (float)(0.03 * UnitsPerPixel * 1000 / 2);
                 Position.Y += (float)(0.03 * UnitsPerPixel * 1000 / 2);

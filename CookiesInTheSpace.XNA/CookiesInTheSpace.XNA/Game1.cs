@@ -25,6 +25,9 @@ namespace CookiesInTheSpace.XNA
         float spaceSize;
         int universalCounter = 0;
 
+        // FOR MASS AMPLITUDE TESTS
+        float minMass, maxMass = 0;
+
         Texture2D myTexture;
 
 
@@ -46,29 +49,42 @@ namespace CookiesInTheSpace.XNA
         protected override void Initialize()
         {
             IsFixedTimeStep = false;
-            float massFactor = 10000000;
+            float massFactor = 100000;
+            float SU = 0.125f;
 
-            float earthRadius = 6.3f;
-            float earthDensity = 5.513e6f * massFactor;
-            float earthOrbitRadius = 152000;
+            float earthRadius = SU;
+            float earthDensity = 8e3f * massFactor * (3 / 2) * SU;
+            float earthOrbitRadius = 4096f*SU/4;
 
-            float moonRadius = 1.737f;
-            float moonDensity = 3.45e6f * massFactor;
-            float moonOrbitRadius = 385f;
+            float moonRadius = 0.2f*SU;
+            float moonDensity = 4e3f * massFactor * (3 / 2) * moonRadius;
+            float moonOrbitRadius = 8f*SU;
 
-            float venusRadius = 5f;
-            float venusDensity = 5.513e6f * massFactor;
-            float venusOrbitRadius = 100000;
+            //float moonMRadius = 0.03125f * SU;
+            //float moonMDensity = 2e3f * massFactor * (3 / 2) * moonMRadius;
+            //float moonMOrbitRadius = 0.625f * SU;
 
-            float jupiterRadius = 30f;
-            float jupiterDensity = 5.513e6f * massFactor;
-            float jupiterOrbitRadius = 250000;
+            float moonMRadius = 0.125f * SU;
+            float moonMDensity = 2e3f * massFactor * (3 / 2) * moonMRadius;
+            float moonMOrbitRadius = 5f * SU;
 
-            float sunRadius = 109 * earthRadius;
-            float sunDensity = 1.408e6f * 100 * massFactor;
+            float venusRadius = 0.8f*SU;
+            float venusDensity = 6e3f * massFactor * (3 / 2) * venusRadius;
+            float venusOrbitRadius = 3072f*SU/4;
 
-            spaceSize = 16777216;
+            float jupiterRadius = 8f*SU;
+            float jupiterDensity = 2e3f * massFactor * (3 / 2) * jupiterRadius;
+            float jupiterOrbitRadius = 8192f*SU/4;
+
+            float sunRadius = 64 * earthRadius;
+            float sunDensity = 2.6e3f * massFactor * (3 / 2) * sunRadius;
+
+            spaceSize = 4096;
             float centerPos = spaceSize / 2;
+            float centerPos1 = spaceSize / 8;
+            float centerPos2 = (spaceSize / 16) * 14;
+            float centerPos3 = (spaceSize / 16) * 10;
+            float centerPos4 = (spaceSize / 16) * 7;
 
             space = new Space(spaceSize);
 
@@ -77,6 +93,7 @@ namespace CookiesInTheSpace.XNA
             SpaceObject moon;
             SpaceObject venus;
             SpaceObject jupiter;
+            SpaceObject moonM;
             
             //Vector2[] shape = { new Vector2(50, 0) };
             //space.createObject(shape, 123000000000, new Vector2(400, 400), typeof(Planet));
@@ -84,24 +101,95 @@ namespace CookiesInTheSpace.XNA
             //space.createObject(shape, 123, new Vector2(400, 700), typeof(Planet));
             //space.createObject(shape, 123000000000, new Vector2(700, 400), typeof(Planet));
 
-            sun = space.createObject(new Vector2[] { new Vector2(sunRadius, 0) }, sunDensity, new Vector2(centerPos, centerPos), typeof(Planet));
+            sun = space.createObject(new Vector2[] { new Vector2(sunRadius, 0) }, sunDensity, new Vector2(centerPos1, centerPos1), typeof(Planet));
             
             float earthVel = -(float)Math.Sqrt(Space.G * sun.Mass / earthOrbitRadius);
-            earth = space.createObject(new Vector2[] { new Vector2(earthRadius, 0) }, earthDensity, new Vector2(centerPos - earthOrbitRadius, centerPos), typeof(Planet));
+            earth = space.createObject(new Vector2[] { new Vector2(earthRadius, 0) }, earthDensity, new Vector2(centerPos1 - earthOrbitRadius, centerPos1), typeof(Planet));
             earth.Velocity = new Vector2(0, earthVel);
             
 
             float venusVel = -(float)Math.Sqrt(Space.G * sun.Mass / venusOrbitRadius);
-            venus = space.createObject(new Vector2[] { new Vector2(venusRadius, 0) }, venusDensity, new Vector2(centerPos - venusOrbitRadius, centerPos), typeof(Planet));
+            venus = space.createObject(new Vector2[] { new Vector2(venusRadius, 0) }, venusDensity, new Vector2(centerPos1 - venusOrbitRadius, centerPos1), typeof(Planet));
             venus.Velocity = new Vector2(0, venusVel);
             
 
             float jupiterVel = -(float)Math.Sqrt(Space.G * sun.Mass / jupiterOrbitRadius);
-            jupiter = space.createObject(new Vector2[] { new Vector2(jupiterRadius, 0) }, jupiterDensity, new Vector2(centerPos - jupiterOrbitRadius, centerPos), typeof(Planet));
+            jupiter = space.createObject(new Vector2[] { new Vector2(jupiterRadius, 0) }, jupiterDensity, new Vector2(centerPos1 - jupiterOrbitRadius, centerPos1), typeof(Planet));
             jupiter.Velocity = new Vector2(0, jupiterVel);
 
-            moon = space.createObject(new Vector2[] { new Vector2(moonRadius, 0) }, moonDensity, new Vector2(centerPos - earthOrbitRadius - moonOrbitRadius, centerPos), typeof(Planet));
+            moon = space.createObject(new Vector2[] { new Vector2(moonRadius, 0) }, moonDensity, new Vector2(centerPos1 - earthOrbitRadius - moonOrbitRadius, centerPos1), typeof(Planet));
             moon.Velocity = new Vector2(0, earthVel - (float)Math.Sqrt(Space.G * earth.Mass / moonOrbitRadius));
+
+            //moonM = space.createObject(new Vector2[] { new Vector2(moonMRadius, 0) }, moonMDensity, new Vector2(moon.Position.X - moonMOrbitRadius, centerPos1), typeof(Planet));
+            //moonM.Velocity = new Vector2(0, moon.Velocity.Y - (float)Math.Sqrt(Space.G * moon.Mass / moonMOrbitRadius));
+
+            moonM = space.createObject(new Vector2[] { new Vector2(moonMRadius, 0) }, moonMDensity, new Vector2(centerPos1 - earthOrbitRadius + moonMOrbitRadius, centerPos1), typeof(Planet));
+            moonM.Velocity = new Vector2(0, earthVel - (float)Math.Sqrt(Space.G * earth.Mass / moonMOrbitRadius));
+
+            // 2ND SYSTEM
+            sun = space.createObject(new Vector2[] { new Vector2(sunRadius, 0) }, sunDensity, new Vector2(centerPos2, centerPos2), typeof(Planet));
+
+            earth = space.createObject(new Vector2[] { new Vector2(earthRadius, 0) }, earthDensity, new Vector2(centerPos2 - earthOrbitRadius, centerPos2), typeof(Planet));
+            earth.Velocity = new Vector2(0, earthVel);
+
+            venus = space.createObject(new Vector2[] { new Vector2(venusRadius, 0) }, venusDensity, new Vector2(centerPos2 - venusOrbitRadius, centerPos2), typeof(Planet));
+            venus.Velocity = new Vector2(0, venusVel);
+
+            jupiter = space.createObject(new Vector2[] { new Vector2(jupiterRadius, 0) }, jupiterDensity, new Vector2(centerPos2 - jupiterOrbitRadius, centerPos2), typeof(Planet));
+            jupiter.Velocity = new Vector2(0, jupiterVel);
+
+            moon = space.createObject(new Vector2[] { new Vector2(moonRadius, 0) }, moonDensity, new Vector2(centerPos2 - earthOrbitRadius - moonOrbitRadius, centerPos2), typeof(Planet));
+            moon.Velocity = new Vector2(0, earthVel - (float)Math.Sqrt(Space.G * earth.Mass / moonOrbitRadius));
+
+            //moonM = space.createObject(new Vector2[] { new Vector2(moonMRadius, 0) }, moonMDensity, new Vector2(moon.Position.X - moonMOrbitRadius, centerPos2), typeof(Planet));
+            //moonM.Velocity = new Vector2(0, moon.Velocity.Y - (float)Math.Sqrt(Space.G * moon.Mass / moonMOrbitRadius));
+
+            moonM = space.createObject(new Vector2[] { new Vector2(moonMRadius, 0) }, moonMDensity, new Vector2(centerPos2 - earthOrbitRadius + moonMOrbitRadius, centerPos2), typeof(Planet));
+            moonM.Velocity = new Vector2(0, earthVel - (float)Math.Sqrt(Space.G * earth.Mass / moonMOrbitRadius));
+
+            // 3RD SYSTEM
+            sun = space.createObject(new Vector2[] { new Vector2(sunRadius, 0) }, sunDensity, new Vector2(centerPos3, centerPos3), typeof(Planet));
+
+            earth = space.createObject(new Vector2[] { new Vector2(earthRadius, 0) }, earthDensity, new Vector2(centerPos3 - earthOrbitRadius, centerPos3), typeof(Planet));
+            earth.Velocity = new Vector2(0, earthVel);
+
+            venus = space.createObject(new Vector2[] { new Vector2(venusRadius, 0) }, venusDensity, new Vector2(centerPos3 - venusOrbitRadius, centerPos3), typeof(Planet));
+            venus.Velocity = new Vector2(0, venusVel);
+
+            jupiter = space.createObject(new Vector2[] { new Vector2(jupiterRadius, 0) }, jupiterDensity, new Vector2(centerPos3 - jupiterOrbitRadius, centerPos3), typeof(Planet));
+            jupiter.Velocity = new Vector2(0, jupiterVel);
+
+            moon = space.createObject(new Vector2[] { new Vector2(moonRadius, 0) }, moonDensity, new Vector2(centerPos3 - earthOrbitRadius - moonOrbitRadius, centerPos3), typeof(Planet));
+            moon.Velocity = new Vector2(0, earthVel - (float)Math.Sqrt(Space.G * earth.Mass / moonOrbitRadius));
+
+            //moonM = space.createObject(new Vector2[] { new Vector2(moonMRadius, 0) }, moonMDensity, new Vector2(moon.Position.X - moonMOrbitRadius, centerPos3), typeof(Planet));
+            //moonM.Velocity = new Vector2(0, moon.Velocity.Y - (float)Math.Sqrt(Space.G * moon.Mass / moonMOrbitRadius));
+
+            moonM = space.createObject(new Vector2[] { new Vector2(moonMRadius, 0) }, moonMDensity, new Vector2(centerPos3 - earthOrbitRadius + moonMOrbitRadius, centerPos3), typeof(Planet));
+            moonM.Velocity = new Vector2(0, earthVel - (float)Math.Sqrt(Space.G * earth.Mass / moonMOrbitRadius));
+
+            // 4TH SYSTEM
+            sun = space.createObject(new Vector2[] { new Vector2(sunRadius, 0) }, sunDensity, new Vector2(centerPos4, centerPos4), typeof(Planet));
+
+            earth = space.createObject(new Vector2[] { new Vector2(earthRadius, 0) }, earthDensity, new Vector2(centerPos4 - earthOrbitRadius, centerPos4), typeof(Planet));
+            earth.Velocity = new Vector2(0, earthVel);
+
+            venus = space.createObject(new Vector2[] { new Vector2(venusRadius, 0) }, venusDensity, new Vector2(centerPos4 - venusOrbitRadius, centerPos4), typeof(Planet));
+            venus.Velocity = new Vector2(0, venusVel);
+
+            jupiter = space.createObject(new Vector2[] { new Vector2(jupiterRadius, 0) }, jupiterDensity, new Vector2(centerPos4 - jupiterOrbitRadius, centerPos4), typeof(Planet));
+            jupiter.Velocity = new Vector2(0, jupiterVel);
+
+            moon = space.createObject(new Vector2[] { new Vector2(moonRadius, 0) }, moonDensity, new Vector2(centerPos4 - earthOrbitRadius - moonOrbitRadius, centerPos4), typeof(Planet));
+            moon.Velocity = new Vector2(0, earthVel - (float)Math.Sqrt(Space.G * earth.Mass / moonOrbitRadius));
+
+            //moonM = space.createObject(new Vector2[] { new Vector2(moonMRadius, 0) }, moonMDensity, new Vector2(moon.Position.X - moonMOrbitRadius, centerPos4), typeof(Planet));
+            //moonM.Velocity = new Vector2(0, moon.Velocity.Y - (float)Math.Sqrt(Space.G * moon.Mass / moonMOrbitRadius));
+
+            moonM = space.createObject(new Vector2[] { new Vector2(moonMRadius, 0) }, moonMDensity, new Vector2(centerPos4 - earthOrbitRadius + moonMOrbitRadius, centerPos4), typeof(Planet));
+            moonM.Velocity = new Vector2(0, earthVel - (float)Math.Sqrt(Space.G * earth.Mass / moonMOrbitRadius));
+
+
 
             graphics.PreferredBackBufferHeight = 1000;
             graphics.PreferredBackBufferWidth = 1000;
@@ -110,6 +198,14 @@ namespace CookiesInTheSpace.XNA
                 OldPosition = new Vector2(centerPos, centerPos),
                 UnitsPerPixel = spaceSize / (float)graphics.PreferredBackBufferHeight
             };
+
+            // FOR MASS AMPLITUDE TESTS
+            foreach (SpaceObject so in space.SpaceObjects)
+            {
+                minMass += so.Mass;
+            }
+            maxMass = minMass;
+            // END
 
             base.Initialize();
         }
@@ -193,7 +289,12 @@ namespace CookiesInTheSpace.XNA
 
             space.update((float)gameTime.ElapsedGameTime.TotalSeconds);
             camera.Update();
-            Window.Title = "Camera position: ( " + (camera.Position.X) + " , " + (camera.Position.Y) + " )";
+
+            //if (space.STree.totalMass() > maxMass) maxMass = space.STree.totalMass();
+            //else if (space.STree.totalMass() < minMass) minMass = space.STree.totalMass();
+            //Window.Title = "Zoom: " + camera.PixelsPerUnit;
+            //Window.Title = "Total mass: " + (space.STree.totalMass()) + ", min " + minMass + ", max " + maxMass;
+            //Window.Title = "Camera position: ( " + (camera.Position.X) + " , " + (camera.Position.Y) + " )";
             // TODO: Add your update logic here
 
             GC.Collect();

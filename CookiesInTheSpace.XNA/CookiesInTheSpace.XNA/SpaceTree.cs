@@ -328,5 +328,12 @@ namespace CookiesInTheSpace.XNA
             spaceObject.OldPosition = spaceObject.Position;
         }
 
+
+        //Just for detecting mass changes due to incorrect node calculations
+        public float totalMass()
+        {
+            return root.Mass;
+        }
+
     }
 }
