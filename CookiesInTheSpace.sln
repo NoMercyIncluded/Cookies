@@ -15,6 +15,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Primitives2D", "Primitives2
 EndProject
 Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "Model", "Model\Model.modelproj", "{316C9C53-C062-4289-B75C-08316E612419}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceGUI", "SpaceGUi\SpaceGUI.csproj", "{442FA88F-69F2-445E-A31B-D4D3BAC0188D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5749093A-0EAF-4CB5-AB69-2AA8CD9AAD5D}"
+	ProjectSection(SolutionItems) = preProject
+		Current_goals.txt = Current_goals.txt
+		SchemeUseCase.txt = SchemeUseCase.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +79,16 @@ Global
 		{316C9C53-C062-4289-B75C-08316E612419}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{316C9C53-C062-4289-B75C-08316E612419}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{316C9C53-C062-4289-B75C-08316E612419}.Release|x86.ActiveCfg = Release|Any CPU
+		{442FA88F-69F2-445E-A31B-D4D3BAC0188D}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{442FA88F-69F2-445E-A31B-D4D3BAC0188D}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{442FA88F-69F2-445E-A31B-D4D3BAC0188D}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{442FA88F-69F2-445E-A31B-D4D3BAC0188D}.Debug|x86.ActiveCfg = Debug|x86
+		{442FA88F-69F2-445E-A31B-D4D3BAC0188D}.Debug|x86.Build.0 = Debug|x86
+		{442FA88F-69F2-445E-A31B-D4D3BAC0188D}.Release|Any CPU.ActiveCfg = Release|x86
+		{442FA88F-69F2-445E-A31B-D4D3BAC0188D}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{442FA88F-69F2-445E-A31B-D4D3BAC0188D}.Release|Mixed Platforms.Build.0 = Release|x86
+		{442FA88F-69F2-445E-A31B-D4D3BAC0188D}.Release|x86.ActiveCfg = Release|x86
+		{442FA88F-69F2-445E-A31B-D4D3BAC0188D}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

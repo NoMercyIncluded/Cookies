@@ -16,7 +16,7 @@ namespace CookiesInTheSpace.XNA
     /// <summary>
     /// This is the main type for your game
     /// </summary>
-    public class Game1 : Microsoft.Xna.Framework.Game
+    public class MainGame : Microsoft.Xna.Framework.Game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
@@ -26,12 +26,12 @@ namespace CookiesInTheSpace.XNA
         int universalCounter = 0;
 
         // FOR MASS AMPLITUDE TESTS
-        float minMass, maxMass = 0;
+        //float minMass, maxMass = 0;
 
         Texture2D myTexture;
 
 
-        public Game1()
+        public MainGame()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
@@ -48,17 +48,23 @@ namespace CookiesInTheSpace.XNA
         /// </summary>
         protected override void Initialize()
         {
+            spaceSize = 4096;
+            space = new Space(spaceSize);
             IsFixedTimeStep = false;
             float massFactor = 100000;
             float SU = 0.125f;
 
+            float centerPos1 = spaceSize / 8;
+            float centerPos2 = (spaceSize / 16) * 14;
+            float centerPos3 = (spaceSize / 16) * 10;
+            float centerPos4 = (spaceSize / 16) * 7;
             float earthRadius = SU;
             float earthDensity = 8e3f * massFactor * (3 / 2) * SU;
-            float earthOrbitRadius = 4096f*SU/4;
+            float earthOrbitRadius = 4096f * SU / 4;
 
-            float moonRadius = 0.2f*SU;
+            float moonRadius = 0.2f * SU;
             float moonDensity = 4e3f * massFactor * (3 / 2) * moonRadius;
-            float moonOrbitRadius = 8f*SU;
+            float moonOrbitRadius = 8f * SU;
 
             //float moonMRadius = 0.03125f * SU;
             //float moonMDensity = 2e3f * massFactor * (3 / 2) * moonMRadius;
@@ -68,25 +74,16 @@ namespace CookiesInTheSpace.XNA
             float moonMDensity = 2e3f * massFactor * (3 / 2) * moonMRadius;
             float moonMOrbitRadius = 5f * SU;
 
-            float venusRadius = 0.8f*SU;
+            float venusRadius = 0.8f * SU;
             float venusDensity = 6e3f * massFactor * (3 / 2) * venusRadius;
-            float venusOrbitRadius = 3072f*SU/4;
+            float venusOrbitRadius = 3072f * SU / 4;
 
-            float jupiterRadius = 8f*SU;
+            float jupiterRadius = 8f * SU;
             float jupiterDensity = 2e3f * massFactor * (3 / 2) * jupiterRadius;
-            float jupiterOrbitRadius = 8192f*SU/4;
+            float jupiterOrbitRadius = 8192f * SU / 4;
 
             float sunRadius = 64 * earthRadius;
             float sunDensity = 2.6e3f * massFactor * (3 / 2) * sunRadius;
-
-            spaceSize = 4096;
-            float centerPos = spaceSize / 2;
-            float centerPos1 = spaceSize / 8;
-            float centerPos2 = (spaceSize / 16) * 14;
-            float centerPos3 = (spaceSize / 16) * 10;
-            float centerPos4 = (spaceSize / 16) * 7;
-
-            space = new Space(spaceSize);
 
             SpaceObject sun;
             SpaceObject earth;
@@ -94,7 +91,7 @@ namespace CookiesInTheSpace.XNA
             SpaceObject venus;
             SpaceObject jupiter;
             SpaceObject moonM;
-            
+
             //Vector2[] shape = { new Vector2(50, 0) };
             //space.createObject(shape, 123000000000, new Vector2(400, 400), typeof(Planet));
             //space.createObject(shape, 123000000000, new Vector2(700, 700), typeof(Planet));
@@ -102,16 +99,16 @@ namespace CookiesInTheSpace.XNA
             //space.createObject(shape, 123000000000, new Vector2(700, 400), typeof(Planet));
 
             sun = space.createObject(new Vector2[] { new Vector2(sunRadius, 0) }, sunDensity, new Vector2(centerPos1, centerPos1), typeof(Planet));
-            
+
             float earthVel = -(float)Math.Sqrt(Space.G * sun.Mass / earthOrbitRadius);
             earth = space.createObject(new Vector2[] { new Vector2(earthRadius, 0) }, earthDensity, new Vector2(centerPos1 - earthOrbitRadius, centerPos1), typeof(Planet));
             earth.Velocity = new Vector2(0, earthVel);
-            
+
 
             float venusVel = -(float)Math.Sqrt(Space.G * sun.Mass / venusOrbitRadius);
             venus = space.createObject(new Vector2[] { new Vector2(venusRadius, 0) }, venusDensity, new Vector2(centerPos1 - venusOrbitRadius, centerPos1), typeof(Planet));
             venus.Velocity = new Vector2(0, venusVel);
-            
+
 
             float jupiterVel = -(float)Math.Sqrt(Space.G * sun.Mass / jupiterOrbitRadius);
             jupiter = space.createObject(new Vector2[] { new Vector2(jupiterRadius, 0) }, jupiterDensity, new Vector2(centerPos1 - jupiterOrbitRadius, centerPos1), typeof(Planet));
@@ -189,8 +186,7 @@ namespace CookiesInTheSpace.XNA
             moonM = space.createObject(new Vector2[] { new Vector2(moonMRadius, 0) }, moonMDensity, new Vector2(centerPos4 - earthOrbitRadius + moonMOrbitRadius, centerPos4), typeof(Planet));
             moonM.Velocity = new Vector2(0, earthVel - (float)Math.Sqrt(Space.G * earth.Mass / moonMOrbitRadius));
 
-
-
+            float centerPos = spaceSize / 2;
             graphics.PreferredBackBufferHeight = 1000;
             graphics.PreferredBackBufferWidth = 1000;
             camera = new Camera(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight)
@@ -200,11 +196,11 @@ namespace CookiesInTheSpace.XNA
             };
 
             // FOR MASS AMPLITUDE TESTS
-            foreach (SpaceObject so in space.SpaceObjects)
-            {
-                minMass += so.Mass;
-            }
-            maxMass = minMass;
+            //foreach (SpaceObject so in space.SpaceObjects)
+            //{
+            //    minMass += so.Mass;
+            //}
+            //maxMass = minMass;
             // END
 
             base.Initialize();
@@ -287,7 +283,7 @@ namespace CookiesInTheSpace.XNA
                 camera.FreeLock();
             }
 
-            space.update((float)gameTime.ElapsedGameTime.TotalSeconds);
+            space.update(50*(float)gameTime.ElapsedGameTime.TotalSeconds);
             camera.Update();
 
             //if (space.STree.totalMass() > maxMass) maxMass = space.STree.totalMass();

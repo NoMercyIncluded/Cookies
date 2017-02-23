@@ -1,0 +1,20 @@
+06.01.2017
+First - need to create stable stellar systems.
+This requires a convenient GUI helping with design and tests.
+Saving and loading various settings.
+Main menu independent of game instance - instances with their own menus or tabs in main menu?
+-> distill easy to use game instance.
+
+Top priority:
+1. Convenient world creating - with GUI:
+- Star, planet, moon and other celestial bodies creator
+- Solar system creator (calculating, for example, orbits and speed of the planets needed to maintain static orbit)
+- Saving, loading and reusing those components
+- Ability to integrate them in space
+
+2. Convenient world testing:
+- GUI and camera
+- analysis tools - gathering data and saving it, detecting anomalies
+- the previous possibly reinforced with graphic in-simulation feedback, i.e afterimage and orbit drawing
+
+

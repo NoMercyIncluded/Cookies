@@ -1,0 +1,75 @@
+Loose use case description:
+
+1. Creating new, not nested component SCHEME:
+	- set radius
+	- set density
+	- set graphic (asset name, theme name or texture?)
+	- set velocity (optional - independent objects might have set speed, the rest will get speed relative to their reference system)
+	- set scheme name
+	#(CORRECT) influence zone as property is unnecessary, since it will be recalculated by editor after every change and upon loading the scheme - for validation
+
+	SchemeComponent:
+	- radius
+	- density
+	- velocity
+	- graphic
+	- name
+
+2. Creating new SchemeNode
+	- derives from SchemeComponent
+	- set influence parameter
+	- calculate influence radius
+	- set influence radius
+	- set allow individual influence parameters for children
+	- set name
+	- add components (Use case: Adding component to reference system)
+
+	SchemeNode:
+	- influenceParameter
+	- influenceRadius
+	- allowChildrenInfluenceParameter
+	- name
+	- children	(SortedDictionary)(nullable)
+	- parent		(nullable)
+
+3. Adding child to SchemeNode:
+	- check if components mass (gravitational pull) is not stronger than it's parent. If it is - abort.
+	- check if selected orbit is in the acceptable range (not too low, not too high).
+	#(IF Reference System allows for)  set individual influence parameter
+	- calculate influence radius (based on individual or system parameter) 
+	- set influence radius in SchemeBond
+	- check if orbit zone (influence radius of the orbitting object) doesn't collide with other orbit zones
+	- (no overlapping orbit zones allowed)	check if orbit is not already occupied 
+	- (overlapping orbit zones are allowed)	check if inserted place on the orbit (point by angle + zone of influence) is not occupied
+	- set orbit in SchemeBond
+	- calculate velocity
+	- set velocity in SchemeBond
+	- set angle (starting point on the orbit, in degrees counterclockwise starting from positive X axis)
+	- set spin (clockwise or not)
+	- set object name in SchemeBond
+	- set allow individual influence parameters for children
+
+	Discussion: influence zone parameter.
+	I guess there will be just one parameter on which influence zone calculation will base (the rest would be gravity impact on object of identical mass).
+	Old idea: parameter set for Space.
+	New idea: parameter set for Space is default. Reference System can overshadow it by his default and individual objects can overshadow it if explicitly specified.
+	Maybe it should be inherited from the parent by default, so if parent has his individual parameter then children inherit it? Tests will show.
+
+	SchemeBond:
+	- influenceParameter
+	- influenceRadius
+	- orbit
+	- velocity
+	- angle
+	- spin
+	- name
+	- allowChildrenInfluenceParameter
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Adding reference systems as components!
+	It is just the same, since materialised scheme becomes new Reference System (with just a root).
+	So just and subtree to the tree and, in case of copying elements, just copy selected subtree.
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ReferenceSystem - root + SchemeBond; Size of influenceRadius of the root.
+ParentScheme - interface handling children. Dictionary of 

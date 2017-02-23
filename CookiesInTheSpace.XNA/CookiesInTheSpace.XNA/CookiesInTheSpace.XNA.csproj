@@ -108,10 +108,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Camera.cs" />
+    <Compile Include="WorldScheme\ReferenceSystem.cs" />
+    <Compile Include="WorldScheme\SchemeBond.cs" />
+    <Compile Include="WorldScheme\SchemeComponent.cs" />
+    <Compile Include="WorldScheme\SchemeNode.cs" />
+    <Compile Include="WorldScheme\SchemeParent.cs" />
+    <Compile Include="WorldScheme\SchemeUtils.cs" />
+    <Compile Include="WorldScheme\SpaceScheme.cs" />
     <Compile Include="Planet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Game1.cs" />
+    <Compile Include="MainGame.cs" />
     <Compile Include="Space.cs" />
     <Compile Include="SpaceGen.cs" />
     <Compile Include="SpaceTreeNode.cs" />
@@ -132,8 +139,9 @@
       <Name>Primitives2D</Name>
     </ProjectReference>
     <ProjectReference Include="..\CookiesInTheSpace.XNAContent\CookiesInTheSpace.XNAContent.contentproj">
-      <Name>CookiesInTheSpace.XNAContent</Name>
+      <Name>CookiesInTheSpace.XNAContent %28Content%29</Name>
       <XnaReferenceType>Content</XnaReferenceType>
+      <Project>{18A5AB6D-7D8A-4205-A8E5-EDDDEB678BD0}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
